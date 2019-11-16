@@ -14,12 +14,6 @@ namespace TrabalhoTemaA.DAL
     
     public partial class ReservaTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReservaTable()
-        {
-            this.EstacaoTable = new HashSet<EstacaoTable>();
-        }
-    
         public int IdReserva { get; set; }
         public int IdCliente { get; set; }
         public int IdPosto { get; set; }
@@ -29,8 +23,6 @@ namespace TrabalhoTemaA.DAL
         public System.DateTime DataReservaFinal { get; set; }
     
         public virtual ClienteTable ClienteTable { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EstacaoTable> EstacaoTable { get; set; }
         public virtual PostoTable PostoTable { get; set; }
     }
 }

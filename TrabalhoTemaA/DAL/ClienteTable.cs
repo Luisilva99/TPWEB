@@ -17,7 +17,6 @@ namespace TrabalhoTemaA.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClienteTable()
         {
-            this.AdminTable = new HashSet<AdminTable>();
             this.ReservaTable = new HashSet<ReservaTable>();
         }
     
@@ -27,8 +26,6 @@ namespace TrabalhoTemaA.DAL
         public string PasswordCliente { get; set; }
         public byte[] ImagemCliente { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdminTable> AdminTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservaTable> ReservaTable { get; set; }
     }

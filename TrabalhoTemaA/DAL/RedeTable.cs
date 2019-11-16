@@ -14,22 +14,11 @@ namespace TrabalhoTemaA.DAL
     
     public partial class RedeTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RedeTable()
-        {
-            this.AdminTable = new HashSet<AdminTable>();
-        }
-    
         public int IdClienteRede { get; set; }
         public string NomeRede { get; set; }
         public string UserName { get; set; }
         public int IdRede { get; set; }
         public byte[] ImagemRede { get; set; }
-        public int IdEstacao { get; set; }
         public string PasswordClienteRede { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdminTable> AdminTable { get; set; }
-        public virtual EstacaoTable EstacaoTable { get; set; }
     }
 }

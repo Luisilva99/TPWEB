@@ -17,17 +17,17 @@ namespace TrabalhoTemaA.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PostoTable()
         {
-            this.EstacaoTable = new HashSet<EstacaoTable>();
+            this.HoraTable = new HashSet<HoraTable>();
             this.ReservaTable = new HashSet<ReservaTable>();
         }
     
         public int IdPosto { get; set; }
         public float PrecoPosto { get; set; }
-        public int IdHora { get; set; }
+        public int IdEstacao { get; set; }
     
+        public virtual EstacaoTable EstacaoTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EstacaoTable> EstacaoTable { get; set; }
-        public virtual HoraTable HoraTable { get; set; }
+        public virtual ICollection<HoraTable> HoraTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReservaTable> ReservaTable { get; set; }
     }

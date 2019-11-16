@@ -15,13 +15,8 @@ namespace TrabalhoTemaA.DAL
     public partial class AdminTable
     {
         public int IdAdmin { get; set; }
-        public int IdClienteRede { get; set; }
-        public int IdCliente { get; set; }
         public string UserNameAdmin { get; set; }
         public string PasswordAdmin { get; set; }
         public string PasswordConfirmation { get; set; }
-    
-        public virtual RedeTable RedeTable { get; set; }
-        public virtual ClienteTable ClienteTable { get; set; }
     }
 }

@@ -14,18 +14,12 @@ namespace TrabalhoTemaA.DAL
     
     public partial class HoraTable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HoraTable()
-        {
-            this.PostoTable = new HashSet<PostoTable>();
-        }
-    
         public int IdHora { get; set; }
         public System.DateTime HoraInicio { get; set; }
         public System.DateTime HoraFinal { get; set; }
         public Nullable<int> EstadoHora { get; set; }
+        public int IdPosto { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PostoTable> PostoTable { get; set; }
+        public virtual PostoTable PostoTable { get; set; }
     }
 }

@@ -278,7 +278,7 @@ warning 6035: The relationship 'FK_EstacaoTable_ToRedeTable' has columns that ar
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseTemaAEntities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseTemaAEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminTable" EntityType="Self.AdminTable" />
           <EntitySet Name="ClienteTable" EntityType="Self.ClienteTable" />
           <EntitySet Name="EstacaoTable" EntityType="Self.EstacaoTable" />
@@ -308,7 +308,7 @@ warning 6035: The relationship 'FK_EstacaoTable_ToRedeTable' has columns that ar
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseTemaAModelStoreContainer" CdmEntityContainer="DatabaseTemaAEntities4">
+        <EntityContainerMapping StorageEntityContainer="DatabaseTemaAModelStoreContainer" CdmEntityContainer="DatabaseTemaAEntities5">
           <EntitySetMapping Name="AdminTable">
             <EntityTypeMapping TypeName="DatabaseTemaAModel.AdminTable">
               <MappingFragment StoreEntitySet="AdminTable">

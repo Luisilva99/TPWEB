@@ -13,10 +13,10 @@ namespace TrabalhoTemaA.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseTemaAEntities4 : DbContext
+    public partial class DatabaseTemaAEntities5 : DbContext
     {
-        public DatabaseTemaAEntities4()
-            : base("name=DatabaseTemaAEntities4")
+        public DatabaseTemaAEntities5()
+            : base("name=DatabaseTemaAEntities5")
         {
         }
     

@@ -173,40 +173,40 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\AdminTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ClienteTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\EstacaoTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\HoraTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\ModelData.Context.cs">
+    <Compile Include="DAL\ModelDataA.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelData.Context.tt</DependentUpon>
+      <DependentUpon>ModelDataA.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\ModelData.cs">
+    <Compile Include="DAL\ModelDataA.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\ModelData.Designer.cs">
+    <Compile Include="DAL\ModelDataA.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelData.edmx</DependentUpon>
+      <DependentUpon>ModelDataA.edmx</DependentUpon>
     </Compile>
     <Compile Include="DAL\PostoTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\RedeTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\ReservaTable.cs">
-      <DependentUpon>ModelData.tt</DependentUpon>
+      <DependentUpon>ModelDataA.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,15 +226,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DAL\ModelData.Context.tt">
+    <Content Include="DAL\ModelDataA.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelData.edmx</DependentUpon>
-      <LastGenOutput>ModelData.Context.cs</LastGenOutput>
+      <DependentUpon>ModelDataA.edmx</DependentUpon>
+      <LastGenOutput>ModelDataA.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DAL\ModelData.tt">
+    <Content Include="DAL\ModelDataA.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelData.edmx</DependentUpon>
-      <LastGenOutput>ModelData.cs</LastGenOutput>
+      <DependentUpon>ModelDataA.edmx</DependentUpon>
+      <LastGenOutput>ModelDataA.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -242,12 +242,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="DAL\ModelData.edmx">
+    <EntityDeploy Include="DAL\ModelDataA.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelData.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelDataA.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DAL\ModelData.edmx.diagram">
-      <DependentUpon>ModelData.edmx</DependentUpon>
+    <Content Include="DAL\ModelDataA.edmx.diagram">
+      <DependentUpon>ModelDataA.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

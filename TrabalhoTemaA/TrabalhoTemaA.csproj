@@ -172,45 +172,18 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DAL\AdminTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ClienteTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\EstacaoTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\HoraTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ModelDataA.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDataA.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ModelDataA.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ModelDataA.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelDataA.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\PostoTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\RedeTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\ReservaTable.cs">
-      <DependentUpon>ModelDataA.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DAL\AdminTable.cs" />
+    <Compile Include="DAL\ClienteTable.cs" />
+    <Compile Include="DAL\EstacaoTable.cs" />
+    <Compile Include="DAL\HoraTable.cs" />
+    <Compile Include="DAL\ModelData.cs" />
+    <Compile Include="DAL\PostoTable.cs" />
+    <Compile Include="DAL\RedeTable.cs" />
+    <Compile Include="DAL\ReservaTable.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -226,29 +199,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="DAL\ModelDataA.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDataA.edmx</DependentUpon>
-      <LastGenOutput>ModelDataA.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DAL\ModelDataA.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelDataA.edmx</DependentUpon>
-      <LastGenOutput>ModelDataA.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="DAL\ModelDataA.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelDataA.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DAL\ModelDataA.edmx.diagram">
-      <DependentUpon>ModelDataA.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -295,7 +251,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Context\" />
+    <Folder Include="Views\AdminTable\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

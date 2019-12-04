@@ -79,6 +79,11 @@ namespace TrabPWEB.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone number")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Not a valid phone number.")]
+        [Required(ErrorMessage = "The phone number must be inserted.")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

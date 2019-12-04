@@ -31,7 +31,11 @@ namespace TrabPWEB.Models
             return new ApplicationDbContext();
         }
 
+
         public DbSet<Region> Regions { get; set; }
+        public DbSet<Local> Locals { get; set; }
         public DbSet<Station> Stations { get; set; }
+        public DbSet<TimeHour> TimeHours { get; set; }
+        public DbSet<StationPost> StationPosts { get; set; }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model TrabPWEB.DAL.Local
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Local</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Region.RegionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region.RegionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocalName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LocalId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

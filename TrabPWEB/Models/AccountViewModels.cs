@@ -81,6 +81,7 @@ namespace TrabPWEB.Models
         public string ConfirmPassword { get; set; }
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone number")]
+        //[DisplayFormat(DataFormatString = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Not a valid phone number.")]
         [Required(ErrorMessage = "The phone number must be inserted.")]
         public string PhoneNumber { get; set; }

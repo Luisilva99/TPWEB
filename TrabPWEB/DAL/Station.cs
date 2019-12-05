@@ -25,14 +25,14 @@ namespace TrabPWEB.DAL
         public virtual Local Local { get; set; }
 
         //Horário de funcionamento
-        [Required(ErrorMessage = "Obrigatório introduzir as horas de início de funcionamento.")]
+        [Required(ErrorMessage = "Obrigatório introduzir as horas iniciais de funcionamento.")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime Start { get; set; }
 
-        [Required(ErrorMessage = "Obrigatório introduzir as horas de início de funcionamento.")]
+        [Required(ErrorMessage = "Obrigatório introduzir as horas finais de funcionamento.")]
         [DataType(DataType.Time)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime Finnish { get; set; }
         //------------------------
 

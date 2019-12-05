@@ -15,12 +15,12 @@ namespace TrabPWEB.DAL
 
         [Required]
         [DataType(DataType.Time)]
-        [Display(Name = "Tempo")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{HH:mm}")]
+        [Display(Name = "Hora")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime Time { get; set; }
 
         [Required]
-        [Display(Name = "Disponível")]
+        [Display(Name = "Disponibilidade")]
         public Boolean Status { get; set; }
         
     }

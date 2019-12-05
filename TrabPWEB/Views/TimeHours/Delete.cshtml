@@ -24,7 +24,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Status)
+            @if (Model.Status)
+            {
+                <p>Disponível</p>
+            }
+            else
+            {
+                <p>Indisponível</p>
+            }
         </dd>
 
     </dl>

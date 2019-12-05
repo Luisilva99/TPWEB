@@ -26,7 +26,14 @@
             @Html.DisplayFor(modelItem => item.Time)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @if (item.Status)
+            {
+                <p>Disponível</p>
+            }
+            else
+            {
+                <p>Indisponível</p>
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TimeHourId }) |

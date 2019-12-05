@@ -13,15 +13,25 @@ namespace TrabPWEB.DAL
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int StationPostId { get; set; }
 
-        //Adicionado automáticamente ao editar uma estação de carregamento
         [Required]
-        public int StationId { get; set; }
+        [Display(Name = "Nome do Posto")]
+        public string StationPostName { get; set; }
 
-        [ForeignKey("StationId")]
-        public virtual Station Station { get; set; }
-        //-----------------------------------------------------------------
+        ////Adicionado automáticamente ao editar uma estação de carregamento
+        //[Display(Name = "Estação")]
+        //public int StationId { get; set; }
 
+        //[ForeignKey("StationId")]
+        //public virtual Station Station { get; set; }
+        ////-----------------------------------------------------------------
+        
+        [Required]
+        [Display(Name = "Hora")]
+        public int TimeHourId { get; set; }
+        
         [ForeignKey("TimeHourId")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public virtual ICollection<TimeHour> TimeHour { get; set; }
 
     }

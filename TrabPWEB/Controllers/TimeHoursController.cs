@@ -18,7 +18,8 @@ namespace TrabPWEB.Controllers
         // GET: TimeHours
         public ActionResult Index()
         {
-            return View(db.TimeHours.ToList());
+            var ordemTime = db.TimeHours.ToList().OrderBy(p => p.Time.Hour).ThenBy(p => p.Time.Minute);
+            return View(ordemTime);
         }
 
         // GET: TimeHours/Details/5
@@ -37,7 +38,6 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: TimeHours/Create
-        [Authorize(Roles = "Admin, Owner")]
         public ActionResult Create()
         {
             return View();
@@ -61,7 +61,6 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: TimeHours/Edit/5
-        [Authorize(Roles = "Admin, Owner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -93,7 +92,6 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: TimeHours/Delete/5
-        [Authorize(Roles = "Admin, Owner")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

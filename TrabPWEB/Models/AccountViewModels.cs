@@ -5,7 +5,7 @@ namespace TrabPWEB.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório inserir o email.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -33,7 +33,7 @@ namespace TrabPWEB.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "Remember this browser?")]
+        [Display(Name = "Lembrar este browser?")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -41,14 +41,14 @@ namespace TrabPWEB.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório inserir o email.")]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório inserir o email.")]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -64,26 +64,25 @@ namespace TrabPWEB.Models
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório inserir o email.")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "A {0} tem de ter {2} caracteres no mínimo.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Password")]
+        [Compare("Password", ErrorMessage = "A password e a password de confirmação não são iguais não.")]
         public string ConfirmPassword { get; set; }
         [DataType(DataType.PhoneNumber)]
-        [Display(Name = "Phone number")]
-        //[DisplayFormat(DataFormatString = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$")]
-        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Not a valid phone number.")]
-        [Required(ErrorMessage = "The phone number must be inserted.")]
+        [Display(Name = "Contacto")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Não é um número de telemóvel / telefone válido.")]
+        [Required(ErrorMessage = "O número de telemóvel / telefone é obrigatório.")]
         public string PhoneNumber { get; set; }
     }
 
@@ -101,7 +100,7 @@ namespace TrabPWEB.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirmar Password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
@@ -110,7 +109,7 @@ namespace TrabPWEB.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "É obrigatório inserir o email.")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

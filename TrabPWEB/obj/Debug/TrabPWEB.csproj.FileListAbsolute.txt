@@ -208,7 +208,6 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.csprojAssemblyReference.cache
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.InitialCreate.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Second.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Third.resources
@@ -227,3 +226,12 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Eleventh.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Twelfth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Thirteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Fourteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Fifteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Sisteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Seventeenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Eigthteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Ninghteenth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.csprojAssemblyReference.cache
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Twentyth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Twentyfirst.resources

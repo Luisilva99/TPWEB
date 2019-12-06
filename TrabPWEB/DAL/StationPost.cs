@@ -25,8 +25,5 @@ namespace TrabPWEB.DAL
         //public virtual Station Station { get; set; }
         ////-----------------------------------------------------------------
         
-        [Display(Name = "Horários")]
-        public virtual List<TimeData> TimeData { get; set; }
-
     }
 }

@@ -22,5 +22,11 @@ namespace TrabPWEB.DAL
         [Required]
         [Display(Name = "Disponibilidade")]
         public Boolean Status { get; set; }
+
+        //[Display(Name = "Estação")]
+        //public int StationId { get; set; }
+
+        //[ForeignKey("StationId")]
+        //public virtual Station Station { get; set; }
     }
 }

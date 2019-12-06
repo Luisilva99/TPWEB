@@ -174,8 +174,6 @@
     <Compile Include="Controllers\LocalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\StationPostsController.cs" />
-    <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
     <Compile Include="DAL\Region.cs" />
@@ -357,6 +355,18 @@
     <Compile Include="Migrations\201912061150157_Fourty-Third.Designer.cs">
       <DependentUpon>201912061150157_Fourty-Third.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912061849369_Fourty-Fourth.cs" />
+    <Compile Include="Migrations\201912061849369_Fourty-Fourth.Designer.cs">
+      <DependentUpon>201912061849369_Fourty-Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061853334_Fourty-Fifth.cs" />
+    <Compile Include="Migrations\201912061853334_Fourty-Fifth.Designer.cs">
+      <DependentUpon>201912061853334_Fourty-Fifth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061856300_Fourty-Sixth.cs" />
+    <Compile Include="Migrations\201912061856300_Fourty-Sixth.Designer.cs">
+      <DependentUpon>201912061856300_Fourty-Sixth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -444,16 +454,6 @@
     <Content Include="Views\Locals\Details.cshtml" />
     <Content Include="Views\Locals\Edit.cshtml" />
     <Content Include="Views\Locals\Index.cshtml" />
-    <Content Include="Views\TimeDatas\Create.cshtml" />
-    <Content Include="Views\TimeDatas\Delete.cshtml" />
-    <Content Include="Views\TimeDatas\Details.cshtml" />
-    <Content Include="Views\TimeDatas\Edit.cshtml" />
-    <Content Include="Views\TimeDatas\Index.cshtml" />
-    <Content Include="Views\StationPosts\Create.cshtml" />
-    <Content Include="Views\StationPosts\Delete.cshtml" />
-    <Content Include="Views\StationPosts\Details.cshtml" />
-    <Content Include="Views\StationPosts\Edit.cshtml" />
-    <Content Include="Views\StationPosts\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -598,6 +598,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912061150157_Fourty-Third.resx">
       <DependentUpon>201912061150157_Fourty-Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061849369_Fourty-Fourth.resx">
+      <DependentUpon>201912061849369_Fourty-Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061853334_Fourty-Fifth.resx">
+      <DependentUpon>201912061853334_Fourty-Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061856300_Fourty-Sixth.resx">
+      <DependentUpon>201912061856300_Fourty-Sixth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,13 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped w-auto">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.StationPostName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimeHour)
+            @Html.DisplayNameFor(model => model.TimeData)
         </th>
         <th></th>
     </tr>
@@ -26,17 +26,27 @@
             @Html.DisplayFor(modelItem => item.StationPostName)
         </td>
         <td>
-            <ul>
-                @foreach (var itemTime in item.TimeHour)
-                {
-                    <li>
-                        @Html.DisplayFor(modelItem => itemTime.Time, "{0:HH:mm}")
-                    </li>
-                    <li>
-                        @Html.DisplayFor(modelItem => itemTime.Status)
-                    </li>
-                }
-            </ul>
+            <div class="table-responsive">
+                <table class="table table-striped w-auto table-bordered">
+                    @foreach (var itemTime in item.TimeData)
+                    {
+                        <tr>
+                            <td>
+                                <b>Hora: </b>
+                                @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
+                            </td>
+                            @if (itemTime.Status)
+                            {
+                                <td><b>Disponibilidade: </b>Disponível</td>
+                            }
+                            else
+                            {
+                                <td><b>Disponibilidade: </b>Indisponível</td>
+                            }
+                        </tr>
+                    }
+                </table>
+            </div>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.StationPostId }) |

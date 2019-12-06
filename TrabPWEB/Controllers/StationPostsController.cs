@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -51,7 +51,19 @@ namespace TrabPWEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                stationPost.TimeHour.Add(new TimeHour());
+                stationPost.TimeData = new List<TimeData>();
+                //Refazer este:
+                for(int i = 0; i < 24; i++)
+                {
+                    TimeData tt = new TimeData()
+                    {
+                        Time = new DateTime(1999,1,1,i,0,0),
+                        Status = false,
+                        TimeDataId = db.TimeDatas.Count()
+                    };
+                    stationPost.TimeData.Add(tt);
+                }
+                
                 db.StationPosts.Add(stationPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -103,6 +115,16 @@ namespace TrabPWEB.Controllers
             {
                 return HttpNotFound();
             }
+            foreach (TimeData item in db.TimeDatas.ToList())
+            {
+                if (stationPost.TimeData.Contains(item))
+                {
+                    stationPost.TimeData.Remove(item);
+                    db.TimeDatas.Remove(item);
+                }
+            }
+            db.SaveChanges();
+            stationPost.TimeData.Clear();
             return View(stationPost);
         }
 

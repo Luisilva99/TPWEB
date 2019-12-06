@@ -251,3 +251,9 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.ThirtyFifth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.ThirtySixth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.ThirtySeventh.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.ThirtyEigth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.ThirtyNinght.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Fourty.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyFirst.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtySecond.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyThird.resources

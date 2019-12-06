@@ -35,7 +35,7 @@ namespace TrabPWEB.Models
         public DbSet<Region> Regions { get; set; }
         public DbSet<Local> Locals { get; set; }
         public DbSet<Station> Stations { get; set; }
-        public DbSet<TimeHour> TimeHours { get; set; }
+        public DbSet<TimeData> TimeDatas { get; set; }
         public DbSet<StationPost> StationPosts { get; set; }
     }
 }

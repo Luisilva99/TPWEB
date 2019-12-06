@@ -175,14 +175,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StationPostsController.cs" />
-    <Compile Include="Controllers\TimeHoursController.cs" />
+    <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
-    <Compile Include="DAL\TimeHour.cs" />
-    <Compile Include="DAL\TimeHourData.cs" />
+    <Compile Include="DAL\TimeData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -334,6 +333,30 @@
     <Compile Include="Migrations\201912061054136_Thirty-Seventh.Designer.cs">
       <DependentUpon>201912061054136_Thirty-Seventh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912061133404_Thirty-Eigth.cs" />
+    <Compile Include="Migrations\201912061133404_Thirty-Eigth.Designer.cs">
+      <DependentUpon>201912061133404_Thirty-Eigth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061136018_Thirty-Ninght.cs" />
+    <Compile Include="Migrations\201912061136018_Thirty-Ninght.Designer.cs">
+      <DependentUpon>201912061136018_Thirty-Ninght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061136380_Fourty.cs" />
+    <Compile Include="Migrations\201912061136380_Fourty.Designer.cs">
+      <DependentUpon>201912061136380_Fourty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061139204_Fourty-First.cs" />
+    <Compile Include="Migrations\201912061139204_Fourty-First.Designer.cs">
+      <DependentUpon>201912061139204_Fourty-First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061146061_Fourty-Second.cs" />
+    <Compile Include="Migrations\201912061146061_Fourty-Second.Designer.cs">
+      <DependentUpon>201912061146061_Fourty-Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061150157_Fourty-Third.cs" />
+    <Compile Include="Migrations\201912061150157_Fourty-Third.Designer.cs">
+      <DependentUpon>201912061150157_Fourty-Third.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -421,11 +444,11 @@
     <Content Include="Views\Locals\Details.cshtml" />
     <Content Include="Views\Locals\Edit.cshtml" />
     <Content Include="Views\Locals\Index.cshtml" />
-    <Content Include="Views\TimeHours\Create.cshtml" />
-    <Content Include="Views\TimeHours\Delete.cshtml" />
-    <Content Include="Views\TimeHours\Details.cshtml" />
-    <Content Include="Views\TimeHours\Edit.cshtml" />
-    <Content Include="Views\TimeHours\Index.cshtml" />
+    <Content Include="Views\TimeDatas\Create.cshtml" />
+    <Content Include="Views\TimeDatas\Delete.cshtml" />
+    <Content Include="Views\TimeDatas\Details.cshtml" />
+    <Content Include="Views\TimeDatas\Edit.cshtml" />
+    <Content Include="Views\TimeDatas\Index.cshtml" />
     <Content Include="Views\StationPosts\Create.cshtml" />
     <Content Include="Views\StationPosts\Delete.cshtml" />
     <Content Include="Views\StationPosts\Details.cshtml" />
@@ -557,6 +580,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912061054136_Thirty-Seventh.resx">
       <DependentUpon>201912061054136_Thirty-Seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061133404_Thirty-Eigth.resx">
+      <DependentUpon>201912061133404_Thirty-Eigth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061136018_Thirty-Ninght.resx">
+      <DependentUpon>201912061136018_Thirty-Ninght.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061136380_Fourty.resx">
+      <DependentUpon>201912061136380_Fourty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061139204_Fourty-First.resx">
+      <DependentUpon>201912061139204_Fourty-First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061146061_Fourty-Second.resx">
+      <DependentUpon>201912061146061_Fourty-Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061150157_Fourty-Third.resx">
+      <DependentUpon>201912061150157_Fourty-Third.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

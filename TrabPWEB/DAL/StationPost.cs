@@ -24,13 +24,9 @@ namespace TrabPWEB.DAL
         //[ForeignKey("StationId")]
         //public virtual Station Station { get; set; }
         ////-----------------------------------------------------------------
-
-        //[Required]
-        //public int TimeHourId { get; set; }
-
-        //[ForeignKey("TimeHourId")]
-        [Display(Name = "Hora")]
-        public virtual IList<TimeHour> TimeHour { get; set; }
+        
+        [Display(Name = "Horários")]
+        public virtual List<TimeData> TimeData { get; set; }
 
     }
 }

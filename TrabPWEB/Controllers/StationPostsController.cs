@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -18,8 +18,7 @@ namespace TrabPWEB.Controllers
         // GET: StationPosts
         public ActionResult Index()
         {
-            var stationPosts = db.StationPosts.Include(s => s.TimeHour);
-            return View(stationPosts.ToList());
+            return View(db.StationPosts.ToList());
         }
 
         // GET: StationPosts/Details/5
@@ -40,7 +39,6 @@ namespace TrabPWEB.Controllers
         // GET: StationPosts/Create
         public ActionResult Create()
         {
-            ViewBag.StationPostId = new SelectList(db.TimeHours, "TimeHourId", "TimeHourId");
             return View();
         }
 
@@ -53,12 +51,12 @@ namespace TrabPWEB.Controllers
         {
             if (ModelState.IsValid)
             {
+                stationPost.TimeHour.Add(new TimeHour());
                 db.StationPosts.Add(stationPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StationPostId = new SelectList(db.TimeHours, "TimeHourId", "TimeHourId", stationPost.StationPostId);
             return View(stationPost);
         }
 
@@ -74,7 +72,6 @@ namespace TrabPWEB.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StationPostId = new SelectList(db.TimeHours, "TimeHourId", "TimeHourId", stationPost.StationPostId);
             return View(stationPost);
         }
 
@@ -91,7 +88,6 @@ namespace TrabPWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StationPostId = new SelectList(db.TimeHours, "TimeHourId", "TimeHourId", stationPost.StationPostId);
             return View(stationPost);
         }
 

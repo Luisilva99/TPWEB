@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TimeHour)
+            @Html.DisplayNameFor(model => model.StationPostName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StationPostName)
+            @Html.DisplayNameFor(model => model.TimeHour)
         </th>
         <th></th>
     </tr>
@@ -23,15 +23,25 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @*@Html.DisplayFor(modelItem => item.TimeHour.TimeHourId)*@
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.StationPostName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StationPostId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StationPostId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StationPostId })
+            <ul>
+                @foreach (var itemTime in item.TimeHour)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => itemTime.Time, "{0:HH:mm}")
+                    </li>
+                    <li>
+                        @Html.DisplayFor(modelItem => itemTime.Status)
+                    </li>
+                }
+            </ul>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.StationPostId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.StationPostId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.StationPostId })
         </td>
     </tr>
 }

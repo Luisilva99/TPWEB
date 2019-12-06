@@ -182,6 +182,7 @@
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
     <Compile Include="DAL\TimeHour.cs" />
+    <Compile Include="DAL\TimeHourData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,6 +269,70 @@
     <Compile Include="Migrations\201912051306145_Twenty-first.cs" />
     <Compile Include="Migrations\201912051306145_Twenty-first.Designer.cs">
       <DependentUpon>201912051306145_Twenty-first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051838326_Twenty-Second.cs" />
+    <Compile Include="Migrations\201912051838326_Twenty-Second.Designer.cs">
+      <DependentUpon>201912051838326_Twenty-Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051841557_Twenty-Third.cs" />
+    <Compile Include="Migrations\201912051841557_Twenty-Third.Designer.cs">
+      <DependentUpon>201912051841557_Twenty-Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051901356_Twenty-Fourth.cs" />
+    <Compile Include="Migrations\201912051901356_Twenty-Fourth.Designer.cs">
+      <DependentUpon>201912051901356_Twenty-Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051920378_Twenty-Fifth.cs" />
+    <Compile Include="Migrations\201912051920378_Twenty-Fifth.Designer.cs">
+      <DependentUpon>201912051920378_Twenty-Fifth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912051947187_Twenty-Sixth.cs" />
+    <Compile Include="Migrations\201912051947187_Twenty-Sixth.Designer.cs">
+      <DependentUpon>201912051947187_Twenty-Sixth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912052010464_Twenty-Seventh.cs" />
+    <Compile Include="Migrations\201912052010464_Twenty-Seventh.Designer.cs">
+      <DependentUpon>201912052010464_Twenty-Seventh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912052101487_Twenty-Eighth.cs" />
+    <Compile Include="Migrations\201912052101487_Twenty-Eighth.Designer.cs">
+      <DependentUpon>201912052101487_Twenty-Eighth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912060915139_Twenty-Ninght.cs" />
+    <Compile Include="Migrations\201912060915139_Twenty-Ninght.Designer.cs">
+      <DependentUpon>201912060915139_Twenty-Ninght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912060917158_Thirty.cs" />
+    <Compile Include="Migrations\201912060917158_Thirty.Designer.cs">
+      <DependentUpon>201912060917158_Thirty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061023030_Thirty-First.cs" />
+    <Compile Include="Migrations\201912061023030_Thirty-First.Designer.cs">
+      <DependentUpon>201912061023030_Thirty-First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061028278_Thirty-Second.cs" />
+    <Compile Include="Migrations\201912061028278_Thirty-Second.Designer.cs">
+      <DependentUpon>201912061028278_Thirty-Second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061029516_Thirty-Third.cs" />
+    <Compile Include="Migrations\201912061029516_Thirty-Third.Designer.cs">
+      <DependentUpon>201912061029516_Thirty-Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061030480_Thirty-Fourth.cs" />
+    <Compile Include="Migrations\201912061030480_Thirty-Fourth.Designer.cs">
+      <DependentUpon>201912061030480_Thirty-Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061050136_Thirty-Fifth.cs" />
+    <Compile Include="Migrations\201912061050136_Thirty-Fifth.Designer.cs">
+      <DependentUpon>201912061050136_Thirty-Fifth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061053130_Thirty-Sixth.cs" />
+    <Compile Include="Migrations\201912061053130_Thirty-Sixth.Designer.cs">
+      <DependentUpon>201912061053130_Thirty-Sixth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912061054136_Thirty-Seventh.cs" />
+    <Compile Include="Migrations\201912061054136_Thirty-Seventh.Designer.cs">
+      <DependentUpon>201912061054136_Thirty-Seventh.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -444,6 +509,54 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912051306145_Twenty-first.resx">
       <DependentUpon>201912051306145_Twenty-first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051838326_Twenty-Second.resx">
+      <DependentUpon>201912051838326_Twenty-Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051841557_Twenty-Third.resx">
+      <DependentUpon>201912051841557_Twenty-Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051901356_Twenty-Fourth.resx">
+      <DependentUpon>201912051901356_Twenty-Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051920378_Twenty-Fifth.resx">
+      <DependentUpon>201912051920378_Twenty-Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912051947187_Twenty-Sixth.resx">
+      <DependentUpon>201912051947187_Twenty-Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912052010464_Twenty-Seventh.resx">
+      <DependentUpon>201912052010464_Twenty-Seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912052101487_Twenty-Eighth.resx">
+      <DependentUpon>201912052101487_Twenty-Eighth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060915139_Twenty-Ninght.resx">
+      <DependentUpon>201912060915139_Twenty-Ninght.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912060917158_Thirty.resx">
+      <DependentUpon>201912060917158_Thirty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061023030_Thirty-First.resx">
+      <DependentUpon>201912061023030_Thirty-First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061028278_Thirty-Second.resx">
+      <DependentUpon>201912061028278_Thirty-Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061029516_Thirty-Third.resx">
+      <DependentUpon>201912061029516_Thirty-Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061030480_Thirty-Fourth.resx">
+      <DependentUpon>201912061030480_Thirty-Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061050136_Thirty-Fifth.resx">
+      <DependentUpon>201912061050136_Thirty-Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061053130_Thirty-Sixth.resx">
+      <DependentUpon>201912061053130_Thirty-Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912061054136_Thirty-Seventh.resx">
+      <DependentUpon>201912061054136_Thirty-Seventh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

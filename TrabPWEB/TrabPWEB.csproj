@@ -176,6 +176,7 @@
     <Compile Include="Controllers\RechargeModsController.cs" />
     <Compile Include="Controllers\RechargeTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
     <Compile Include="DAL\RechargeMod.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
+    <Compile Include="DAL\TimeAtribuition.cs" />
     <Compile Include="DAL\TimeData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,6 +381,10 @@
     <Compile Include="Migrations\201912071413317_Fourty-Eighth.Designer.cs">
       <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912071710468_Fourty-Ninth.cs" />
+    <Compile Include="Migrations\201912071710468_Fourty-Ninth.Designer.cs">
+      <DependentUpon>201912071710468_Fourty-Ninth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -476,6 +482,11 @@
     <Content Include="Views\RechargeTypes\Details.cshtml" />
     <Content Include="Views\RechargeTypes\Edit.cshtml" />
     <Content Include="Views\RechargeTypes\Index.cshtml" />
+    <Content Include="Views\TimeDatas\Create.cshtml" />
+    <Content Include="Views\TimeDatas\Delete.cshtml" />
+    <Content Include="Views\TimeDatas\Details.cshtml" />
+    <Content Include="Views\TimeDatas\Edit.cshtml" />
+    <Content Include="Views\TimeDatas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -635,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912071413317_Fourty-Eighth.resx">
       <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912071710468_Fourty-Ninth.resx">
+      <DependentUpon>201912071710468_Fourty-Ninth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

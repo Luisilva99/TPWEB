@@ -19,6 +19,7 @@ namespace TrabPWEB.DAL
         public string RechargeModName { get; set; }
 
         [Display(Name = "Descrição")]
+        [DataType(DataType.MultilineText)]
         [StringLength(1000, ErrorMessage = "Descrição do modo de carregamento não pode ultrapassar 1000 caracteres.")]
         public string RechargeModDescription { get; set; }
 

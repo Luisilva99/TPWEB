@@ -11,7 +11,7 @@ using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Owner")]
     public class RechargeTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

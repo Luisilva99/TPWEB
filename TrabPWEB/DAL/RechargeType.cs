@@ -19,9 +19,9 @@ namespace TrabPWEB.DAL
         public string RechargeTypeName { get; set; }
 
         [Display(Name = "Descrição")]
+        [DataType(DataType.MultilineText)]
         [StringLength(1000, ErrorMessage = "Descrição do tipo de carregamento não pode ultrapassar 1000 caracteres.")]
         public string RechargeTypeDescription { get; set; }
-
 
     }
 }

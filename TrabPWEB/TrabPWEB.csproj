@@ -184,6 +184,7 @@
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
+    <Compile Include="DAL\TimeAtribuition.cs" />
     <Compile Include="DAL\TimeData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,6 +380,10 @@
     <Compile Include="Migrations\201912071413317_Fourty-Eighth.cs" />
     <Compile Include="Migrations\201912071413317_Fourty-Eighth.Designer.cs">
       <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912071710468_Fourty-Ninth.cs" />
+    <Compile Include="Migrations\201912071710468_Fourty-Ninth.Designer.cs">
+      <DependentUpon>201912071710468_Fourty-Ninth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -641,6 +646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912071413317_Fourty-Eighth.resx">
       <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912071710468_Fourty-Ninth.resx">
+      <DependentUpon>201912071710468_Fourty-Ninth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

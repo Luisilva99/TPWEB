@@ -415,3 +415,4 @@ C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação We
 C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.csproj.CopyComplete
 C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.dll
 C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.pdb
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyNinth.resources

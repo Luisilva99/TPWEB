@@ -37,5 +37,7 @@ namespace TrabPWEB.Models
         public DbSet<Station> Stations { get; set; }
         public DbSet<TimeData> TimeDatas { get; set; }
         public DbSet<StationPost> StationPosts { get; set; }
+        public DbSet<RechargeMod> RechargeMods { get; set; }
+        public DbSet<RechargeType> RechargeTypes { get; set; }
     }
 }

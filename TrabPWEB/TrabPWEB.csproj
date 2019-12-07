@@ -173,9 +173,13 @@
     <Compile Include="Controllers\InitAdminController.cs" />
     <Compile Include="Controllers\LocalsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RechargeModsController.cs" />
+    <Compile Include="Controllers\RechargeTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
+    <Compile Include="DAL\RechargeMod.cs" />
+    <Compile Include="DAL\RechargeType.cs" />
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
@@ -367,6 +371,14 @@
     <Compile Include="Migrations\201912061856300_Fourty-Sixth.Designer.cs">
       <DependentUpon>201912061856300_Fourty-Sixth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912071402312_Fourty-Seventh.cs" />
+    <Compile Include="Migrations\201912071402312_Fourty-Seventh.Designer.cs">
+      <DependentUpon>201912071402312_Fourty-Seventh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912071413317_Fourty-Eighth.cs" />
+    <Compile Include="Migrations\201912071413317_Fourty-Eighth.Designer.cs">
+      <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -454,6 +466,16 @@
     <Content Include="Views\Locals\Details.cshtml" />
     <Content Include="Views\Locals\Edit.cshtml" />
     <Content Include="Views\Locals\Index.cshtml" />
+    <Content Include="Views\RechargeMods\Create.cshtml" />
+    <Content Include="Views\RechargeMods\Delete.cshtml" />
+    <Content Include="Views\RechargeMods\Details.cshtml" />
+    <Content Include="Views\RechargeMods\Edit.cshtml" />
+    <Content Include="Views\RechargeMods\Index.cshtml" />
+    <Content Include="Views\RechargeTypes\Create.cshtml" />
+    <Content Include="Views\RechargeTypes\Delete.cshtml" />
+    <Content Include="Views\RechargeTypes\Details.cshtml" />
+    <Content Include="Views\RechargeTypes\Edit.cshtml" />
+    <Content Include="Views\RechargeTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -607,6 +629,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912061856300_Fourty-Sixth.resx">
       <DependentUpon>201912061856300_Fourty-Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912071402312_Fourty-Seventh.resx">
+      <DependentUpon>201912071402312_Fourty-Seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912071413317_Fourty-Eighth.resx">
+      <DependentUpon>201912071413317_Fourty-Eighth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

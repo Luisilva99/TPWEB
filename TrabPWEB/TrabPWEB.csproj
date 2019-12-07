@@ -176,6 +176,7 @@
     <Compile Include="Controllers\RechargeModsController.cs" />
     <Compile Include="Controllers\RechargeTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
     <Compile Include="DAL\RechargeMod.cs" />
@@ -476,6 +477,11 @@
     <Content Include="Views\RechargeTypes\Details.cshtml" />
     <Content Include="Views\RechargeTypes\Edit.cshtml" />
     <Content Include="Views\RechargeTypes\Index.cshtml" />
+    <Content Include="Views\TimeDatas\Create.cshtml" />
+    <Content Include="Views\TimeDatas\Delete.cshtml" />
+    <Content Include="Views\TimeDatas\Details.cshtml" />
+    <Content Include="Views\TimeDatas\Edit.cshtml" />
+    <Content Include="Views\TimeDatas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

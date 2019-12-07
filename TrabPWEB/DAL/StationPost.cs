@@ -17,6 +17,13 @@ namespace TrabPWEB.DAL
         [Display(Name = "Nome do Posto")]
         public string StationPostName { get; set; }
 
+        [Required]
+        [Display(Name = "Tipo de Carregamento")]
+        public int RechargeTypeId { get; set; }
+
+        [ForeignKey("RechargeTypeId")]
+        public virtual RechargeType RechargeType { get; set; }
+
         ////Adicionado automáticamente ao editar uma estação de carregamento
         //[Display(Name = "Estação")]
         //public int StationId { get; set; }
@@ -24,6 +31,6 @@ namespace TrabPWEB.DAL
         //[ForeignKey("StationId")]
         //public virtual Station Station { get; set; }
         ////-----------------------------------------------------------------
-        
+
     }
 }

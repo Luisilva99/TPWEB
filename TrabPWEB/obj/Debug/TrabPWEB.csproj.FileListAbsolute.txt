@@ -260,3 +260,5 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyFourth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyFifth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtySixth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtySeventh.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.FourtyEighth.resources

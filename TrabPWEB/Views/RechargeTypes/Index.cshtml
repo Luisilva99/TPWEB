@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TrabPWEB.DAL.RechargeType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RechargeTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RechargeTypeDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RechargeTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RechargeTypeDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RechargeTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RechargeTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RechargeTypeId })
+        </td>
+    </tr>
+}
+
+</table>

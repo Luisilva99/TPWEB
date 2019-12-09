@@ -9,16 +9,20 @@ namespace TrabPWEB.DAL
 {
     public class TimeAtribuition
     {
-        public int StationPostId { get; set; }
-
-        [ForeignKey("StationPostId")]
-        public virtual StationPost StationPost { get; set; }
-
-
+        [Key, Column(Order = 0)]
+        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int TimeDataId { get; set; }
+
+        [Key, Column(Order = 1)]
+        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        public int StationPostId { get; set; }
+        
 
         [ForeignKey("TimeDataId")]
         public virtual TimeData TimeData { get; set; }
+
+        [ForeignKey("StationPostId")]
+        public virtual StationPost StationPost { get; set; }
 
     }
 }

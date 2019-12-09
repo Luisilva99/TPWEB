@@ -9,15 +9,16 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped w-auto">
     <tr>
-        <th>
+        <th style="min-width:200px">
             @Html.DisplayNameFor(model => model.RechargeTypeName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RechargeTypeDescription)
         </th>
-        <th></th>
+        <th>
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -28,10 +29,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.RechargeTypeDescription)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RechargeTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RechargeTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RechargeTypeId })
+        <td style="min-width:150px">
+            @Html.ActionLink("Edit", "Edit", new { id = item.RechargeTypeId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RechargeTypeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RechargeTypeId })
         </td>
     </tr>
 }

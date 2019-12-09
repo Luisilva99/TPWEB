@@ -11,7 +11,7 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        <th style="min-width:200px">
             @Html.DisplayNameFor(model => model.RechargeModName)
         </th>
         <th>
@@ -28,7 +28,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.RechargeModDescription)
         </td>
-        <td>
+        <td style="min-width:150px">
             @Html.ActionLink("Edit", "Edit", new { id=item.RechargeModId }) |
             @Html.ActionLink("Details", "Details", new { id=item.RechargeModId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.RechargeModId })

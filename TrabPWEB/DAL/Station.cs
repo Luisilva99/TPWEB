@@ -27,11 +27,13 @@ namespace TrabPWEB.DAL
         //Horário de funcionamento
         [Required(ErrorMessage = "Obrigatório introduzir as horas iniciais de funcionamento.")]
         [DataType(DataType.Time)]
+        [Display(Name = "Hora de abertura")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime Start { get; set; }
 
         [Required(ErrorMessage = "Obrigatório introduzir as horas finais de funcionamento.")]
         [DataType(DataType.Time)]
+        [Display(Name = "Hora de fecho")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
         public DateTime Finnish { get; set; }
         //------------------------

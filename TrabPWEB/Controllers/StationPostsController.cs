@@ -49,11 +49,43 @@ namespace TrabPWEB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StationPostId,StationPostName,RechargeTypeId")] StationPost stationPost)
+        public ActionResult Create(StationPost stationPost)
         {
             if (ModelState.IsValid)
             {
+
                 db.StationPosts.Add(stationPost);
+
+                for (int i = 0; i < 24; i++)
+                {
+                    if (i < stationPost.Start.Hour || i > stationPost.Finnish.Hour)
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                    else
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                }
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -83,7 +115,7 @@ namespace TrabPWEB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StationPostId,StationPostName,RechargeTypeId")] StationPost stationPost)
+        public ActionResult Edit([Bind(Include = "StationPostId,StationPostName,RechargeTypeId,Start,Finnish")] StationPost stationPost)
         {
             if (ModelState.IsValid)
             {

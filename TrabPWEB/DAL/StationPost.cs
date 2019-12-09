@@ -24,13 +24,19 @@ namespace TrabPWEB.DAL
         [ForeignKey("RechargeTypeId")]
         public virtual RechargeType RechargeType { get; set; }
 
-        ////Adicionado automáticamente ao editar uma estação de carregamento
-        //[Display(Name = "Estação")]
-        //public int StationId { get; set; }
+        //Horário de funcionamento
+        [Required(ErrorMessage = "Obrigatório introduzir as horas iniciais de funcionamento.")]
+        [DataType(DataType.Time)]
+        [Display(Name = "Hora de abertura")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        public DateTime Start { get; set; }
 
-        //[ForeignKey("StationId")]
-        //public virtual Station Station { get; set; }
-        ////-----------------------------------------------------------------
+        [Required(ErrorMessage = "Obrigatório introduzir as horas finais de funcionamento.")]
+        [DataType(DataType.Time)]
+        [Display(Name = "Hora de fecho")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        public DateTime Finnish { get; set; }
+        //------------------------
 
     }
 }

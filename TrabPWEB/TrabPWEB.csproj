@@ -177,7 +177,6 @@
     <Compile Include="Controllers\RechargeTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StationPostsController.cs" />
-    <Compile Include="Controllers\TimeAtribuitionsController.cs" />
     <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
@@ -555,6 +554,18 @@
     <Compile Include="Migrations\201912071844349_Ninety-Second.Designer.cs">
       <DependentUpon>201912071844349_Ninety-Second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912091134538_Ninety-Third.cs" />
+    <Compile Include="Migrations\201912091134538_Ninety-Third.Designer.cs">
+      <DependentUpon>201912091134538_Ninety-Third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912091141108_Ninety-Fourth.cs" />
+    <Compile Include="Migrations\201912091141108_Ninety-Fourth.Designer.cs">
+      <DependentUpon>201912091141108_Ninety-Fourth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912091518576_Ninety-Fifth.cs" />
+    <Compile Include="Migrations\201912091518576_Ninety-Fifth.Designer.cs">
+      <DependentUpon>201912091518576_Ninety-Fifth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -662,11 +673,6 @@
     <Content Include="Views\StationPosts\Details.cshtml" />
     <Content Include="Views\StationPosts\Edit.cshtml" />
     <Content Include="Views\StationPosts\Index.cshtml" />
-    <Content Include="Views\TimeAtribuitions\Create.cshtml" />
-    <Content Include="Views\TimeAtribuitions\Delete.cshtml" />
-    <Content Include="Views\TimeAtribuitions\Details.cshtml" />
-    <Content Include="Views\TimeAtribuitions\Edit.cshtml" />
-    <Content Include="Views\TimeAtribuitions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -955,6 +961,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912071844349_Ninety-Second.resx">
       <DependentUpon>201912071844349_Ninety-Second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091134538_Ninety-Third.resx">
+      <DependentUpon>201912091134538_Ninety-Third.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091141108_Ninety-Fourth.resx">
+      <DependentUpon>201912091141108_Ninety-Fourth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912091518576_Ninety-Fifth.resx">
+      <DependentUpon>201912091518576_Ninety-Fifth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

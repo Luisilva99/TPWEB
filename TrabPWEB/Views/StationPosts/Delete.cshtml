@@ -27,6 +27,22 @@
             @Html.DisplayFor(model => model.StationPostName)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Start)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start, "{0:HH:mm}")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finnish)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finnish, "{0:HH:mm}")
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

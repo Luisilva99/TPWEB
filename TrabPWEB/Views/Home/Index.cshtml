@@ -17,23 +17,27 @@
         if (User.IsInRole("Admin"))
         {
             <div class="col-md-4">
-                <h2>Fazer Pesquisa</h2>
-                <p style="text-align:justify">Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
-                <p><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
+                <h2 style="text-size-adjust:auto">Lista de Utilizadores</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode visualizar os utilizadores atualmente registados.</p>
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
             </div>
         }
         if (User.IsInRole("Client"))
         {
             <div class="col-md-4">
-                <h2>Fazer Reserva</h2>
-                <p style="text-align:justify">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
-                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866"> Reserva &raquo;</a></p>
+                <h2 style="text-size-adjust:auto">Fazer Reserva</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866"> Reserva &raquo;</a></p>
             </div>
         }
+        <div class="col-md-4">
+            <h2 style="text-size-adjust:auto">Fazer Pesquisa</h2>
+            <p style="text-align:justify; text-size-adjust:auto">Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
+            <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
+        </div>
     }
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    else
+    {
+
+    }
 </div>

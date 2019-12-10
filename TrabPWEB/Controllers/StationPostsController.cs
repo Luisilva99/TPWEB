@@ -25,14 +25,7 @@ namespace TrabPWEB.Controllers
         
         public List<TimeData> getStationTimes(int? id)
         {
-            List<TimeData> times = new List<TimeData>();
-            if (id == null)
-            {
-                return null;
-            }
-
             var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);
-
             return ttt.ToList();
         }
 

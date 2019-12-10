@@ -23,12 +23,12 @@
                 <ul class="nav navbar-nav">
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>
+                        <li style="text-size-adjust:auto">
                             @Html.ActionLink("Utilizadores", "Index", "UsersAdmin", new { area = "" }, new { @class = ""})
                         </li>
                     }
-                    <li>@Html.ActionLink("Informações", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contactos", "Contact", "Home")</li>
+                    <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
+                    <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -177,6 +177,7 @@
     <Compile Include="Controllers\RechargeTypesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StationPostsController.cs" />
+    <Compile Include="Controllers\StationsController.cs" />
     <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
@@ -583,6 +584,10 @@
     <Compile Include="Migrations\201912100122425_Ninety-Nineth.Designer.cs">
       <DependentUpon>201912100122425_Ninety-Nineth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912101608024_Onehundred.cs" />
+    <Compile Include="Migrations\201912101608024_Onehundred.Designer.cs">
+      <DependentUpon>201912101608024_Onehundred.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -691,6 +696,11 @@
     <Content Include="Views\StationPosts\Details.cshtml" />
     <Content Include="Views\StationPosts\Edit.cshtml" />
     <Content Include="Views\StationPosts\Index.cshtml" />
+    <Content Include="Views\Stations\Create.cshtml" />
+    <Content Include="Views\Stations\Delete.cshtml" />
+    <Content Include="Views\Stations\Details.cshtml" />
+    <Content Include="Views\Stations\Edit.cshtml" />
+    <Content Include="Views\Stations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1000,6 +1010,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912100122425_Ninety-Nineth.resx">
       <DependentUpon>201912100122425_Ninety-Nineth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912101608024_Onehundred.resx">
+      <DependentUpon>201912101608024_Onehundred.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

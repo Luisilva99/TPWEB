@@ -7,6 +7,7 @@ using System.Web;
 
 namespace TrabPWEB.DAL
 {
+
     public class TimeData
     {
         [Key]

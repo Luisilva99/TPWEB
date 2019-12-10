@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-hover table-striped w-auto">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.RechargeType.RechargeTypeName)
@@ -23,9 +23,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Finnish)
         </th>
+        <th>
+            <b>Horários</b>
+        </th>
         <th></th>
-    </tr>
-
+    </tr> 
 @foreach (var item in Model) {
     <tr>
         <td>
@@ -39,6 +41,39 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Finnish, "{0:HH:mm}")
+        </td>
+        <td class="dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Horas</a>
+            <div class="dropdown-menu table-responsive">
+                <table class="dropdown-item table table-hover table-striped w-auto">
+                    <tr class="dropdown-item">
+                        <th>
+                            <b>Horas</b>
+                        </th>
+                        <th>
+                            <b>Disponibilidade</b>
+                        </th>
+                    </tr>
+                    @foreach (TrabPWEB.DAL.TimeData itemTime in ((TrabPWEB.Controllers.StationPostsController)this.ViewContext.Controller).getStationTimes(item.StationPostId))
+                    {
+                        <tr class="dropdown-item">
+                            <td>
+                                @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
+                            </td>
+                            <td>
+                                @if (itemTime.Status)
+                                {
+                                    <p>Disponível</p>
+                                }
+                                else
+                                {
+                                    <p>Indisponível</p>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StationPostId }) |

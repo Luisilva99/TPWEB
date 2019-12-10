@@ -9,7 +9,12 @@ namespace TrabPWEB.DAL
 {
     public class TimeAtribuition
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
+        public int TimeAtribuitionId { get; set; }
+
+
+        [Required]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)]
         public int TimeDataId { get; set; }
 
@@ -17,7 +22,7 @@ namespace TrabPWEB.DAL
         public virtual TimeData TimeData { get; set; }
 
 
-        [Key, Column(Order = 1)]
+        [Required]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None)]
         public int StationPostId { get; set; }
 

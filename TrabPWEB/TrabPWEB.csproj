@@ -185,6 +185,7 @@
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Station.cs" />
     <Compile Include="DAL\StationPost.cs" />
+    <Compile Include="DAL\StationPostsAtribuition.cs" />
     <Compile Include="DAL\TimeAtribuition.cs" />
     <Compile Include="DAL\TimeData.cs" />
     <Compile Include="Global.asax.cs">
@@ -566,6 +567,22 @@
     <Compile Include="Migrations\201912091518576_Ninety-Fifth.Designer.cs">
       <DependentUpon>201912091518576_Ninety-Fifth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912092258319_Ninety-Sixth.cs" />
+    <Compile Include="Migrations\201912092258319_Ninety-Sixth.Designer.cs">
+      <DependentUpon>201912092258319_Ninety-Sixth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912092302478_Ninety-Seventh.cs" />
+    <Compile Include="Migrations\201912092302478_Ninety-Seventh.Designer.cs">
+      <DependentUpon>201912092302478_Ninety-Seventh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912092303578_Ninety-Eighth.cs" />
+    <Compile Include="Migrations\201912092303578_Ninety-Eighth.Designer.cs">
+      <DependentUpon>201912092303578_Ninety-Eighth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912100122425_Ninety-Nineth.cs" />
+    <Compile Include="Migrations\201912100122425_Ninety-Nineth.Designer.cs">
+      <DependentUpon>201912100122425_Ninety-Nineth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -579,6 +596,7 @@
     <Content Include="App_Data\aspnet-TrabPWEB-20191202101004_log.ldf">
       <DependentUpon>aspnet-TrabPWEB-20191202101004.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\operational-amplifier.regular.e_recarga.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -970,6 +988,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912091518576_Ninety-Fifth.resx">
       <DependentUpon>201912091518576_Ninety-Fifth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912092258319_Ninety-Sixth.resx">
+      <DependentUpon>201912092258319_Ninety-Sixth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912092302478_Ninety-Seventh.resx">
+      <DependentUpon>201912092302478_Ninety-Seventh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912092303578_Ninety-Eighth.resx">
+      <DependentUpon>201912092303578_Ninety-Eighth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912100122425_Ninety-Nineth.resx">
+      <DependentUpon>201912100122425_Ninety-Nineth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

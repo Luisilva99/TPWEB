@@ -18,8 +18,22 @@ namespace TrabPWEB.Controllers
         // GET: StationPosts
         public ActionResult Index()
         {
-            var stationPosts = db.StationPosts.Include(s => s.RechargeType);
+            var stationPosts = db.StationPosts.Include(s => s.RechargeType).OrderBy(o => o.StationPostId);
             return View(stationPosts.ToList());
+        }
+
+        
+        public List<TimeData> getStationTimes(int? id)
+        {
+            List<TimeData> times = new List<TimeData>();
+            if (id == null)
+            {
+                return null;
+            }
+
+            var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);
+
+            return ttt.ToList();
         }
 
         // GET: StationPosts/Details/5
@@ -56,7 +70,7 @@ namespace TrabPWEB.Controllers
 
                 db.StationPosts.Add(stationPost);
 
-                for (int i = 0; i < 24; i++)
+                for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
                 {
                     if (i < stationPost.Start.Hour || i > stationPost.Finnish.Hour)
                     {
@@ -119,6 +133,41 @@ namespace TrabPWEB.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var times = db.TimeAtribuitions.Where(o => o.StationPostId == stationPost.StationPostId);
+
+                db.TimeAtribuitions.RemoveRange(times);
+
+                for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
+                {
+                    if (i < stationPost.Start.Hour || i > stationPost.Finnish.Hour)
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                    else
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                }
+
                 db.Entry(stationPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -147,6 +196,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
+            var times = db.TimeAtribuitions.Where(o => o.StationPostId == id);
+
+            db.TimeAtribuitions.RemoveRange(times);
+
             StationPost stationPost = db.StationPosts.Find(id);
             db.StationPosts.Remove(stationPost);
             db.SaveChanges();

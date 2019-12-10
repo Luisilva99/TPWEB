@@ -700,3 +700,7 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetyThird.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetyFourth.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetyFifth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetySixth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetySeventh.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetyEighth.resources
+C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.NinetyNineth.resources

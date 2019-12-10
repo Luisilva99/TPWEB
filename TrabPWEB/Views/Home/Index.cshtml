@@ -2,23 +2,35 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron" style="margin-top:10px">
-    <h1 style="text-align:center">e-Recarga</h1> <img src=""
-    <p class="lead" style="text-align:justify">  A e-Recarga é uma aplicação web que permite aos utilizadores dos postos de carregamento das baterias saber a localização das "estações de
-        postos" existentes e efetuar uma marcação para um carregamento. </p>
+<div class="jumbotron" style="margin-top:10px; text-align:center">
+    @*<h1 style="text-align:center">e-Recarga</h1>*@
+    <img src="~/Assets/operational-amplifier.regular.e_recarga.png" />
+    <p class="lead" style="text-align:justify">
+        A e-Recarga é uma aplicação web que permite aos utilizadores proprietários de veículos elétricos saber a localização das "estações de
+        carregamento" existentes e efetuar uma marcação para um carregamento.
+    </p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Fazer Pesquisa</h2>
-        <p style="text-align:justify">  Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865"> Pesquisa &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Fazer Reserva</h2>
-        <p style="text-align:justify">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866"> Reserva &raquo;</a></p>
-    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="col-md-4">
+                <h2>Fazer Pesquisa</h2>
+                <p style="text-align:justify">Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
+                <p><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
+            </div>
+        }
+        if (User.IsInRole("Client"))
+        {
+            <div class="col-md-4">
+                <h2>Fazer Reserva</h2>
+                <p style="text-align:justify">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866"> Reserva &raquo;</a></p>
+            </div>
+        }
+    }
     <div class="col-md-4">
         <h2>Web Hosting</h2>
         <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>

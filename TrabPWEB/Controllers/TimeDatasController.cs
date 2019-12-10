@@ -11,6 +11,7 @@ using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TimeDatasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

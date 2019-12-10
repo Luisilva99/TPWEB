@@ -41,5 +41,6 @@ namespace TrabPWEB.Models
         public DbSet<RechargeType> RechargeTypes { get; set; }
 
         public DbSet<TimeAtribuition> TimeAtribuitions { get; set; }
+        public DbSet<StationPostsAtribuition> StationPostsAtribuition { get; set; }
     }
 }

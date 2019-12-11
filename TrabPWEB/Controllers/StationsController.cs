@@ -25,15 +25,19 @@ namespace TrabPWEB.Controllers
 
             if (!String.IsNullOrEmpty(procura))
             {
-                stations = stations.Where(s => s.Local.LocalName.Contains(procura));
+                stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
                 svm.Procura = procura;
             }
-
-            if (!String.IsNullOrEmpty(local))
+            else
             {
-                stations = stations.Where(l => l.Local.Equals(local));
-                svm.Local = local;
+                return View("~/Views/Home/Index.cshtml");
             }
+
+            //if (!String.IsNullOrEmpty(local))
+            //{
+            //    stations = stations.Where(l => l.Local.Equals(local));
+            //    svm.Local = local;
+            //}
 
             int nreg = 5;
             int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.

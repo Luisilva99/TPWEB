@@ -38,6 +38,10 @@ namespace TrabPWEB.Controllers
             //    stations = stations.Where(l => l.Local.Equals(local));
             //    svm.Local = local;
             //}
+            //else
+            //{
+            //    return View("~/Views/Home/Index.cshtml");
+            //}
 
             int nreg = 5;
             int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
@@ -215,18 +219,12 @@ namespace TrabPWEB.Controllers
             {
 
                 var stationPost = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPostId);
-
+                
                 foreach (int idPost in stationPost)
                 {
                     var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
-                    //verificar isto
-                    this.Dispose();
-                    //--------------
-                    db.TimeAtribuitions.RemoveRange(times);
-                }
 
-                foreach (int idPost in stationPost)
-                {
+                    db.TimeAtribuitions.RemoveRange(times);
 
                     db.StationPosts.Find(idPost).Start = station.Start;
                     db.StationPosts.Find(idPost).Finnish = station.Finnish;
@@ -291,7 +289,26 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+
             Station station = db.Stations.Find(id);
+
+            var stationPost = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPostId);
+
+            foreach (int idPost in stationPost)
+            {
+                var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
+
+                db.TimeAtribuitions.RemoveRange(times);
+            }
+
+            var stationPostTrue = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPost);
+
+            db.StationPosts.RemoveRange(stationPostTrue);
+
+            var stationsAtt = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId);
+
+            db.StationPostsAtribuition.RemoveRange(stationsAtt);
+
             db.Stations.Remove(station);
             db.SaveChanges();
             return RedirectToAction("Index");

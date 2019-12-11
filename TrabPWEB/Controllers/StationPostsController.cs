@@ -22,7 +22,7 @@ namespace TrabPWEB.Controllers
             return View(stationPosts.ToList());
         }
 
-        
+        // GET: Tempos do posto
         public List<TimeData> getStationTimes(int? id)
         {
             var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);

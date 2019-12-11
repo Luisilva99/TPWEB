@@ -22,10 +22,104 @@ namespace TrabPWEB.Controllers
             return View(stations.ToList());
         }
 
+        // GET: StationPosts/AddPost
+        public ActionResult AddPost(int? id)
+        {
+
+            if (id == null || id < 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Station stat = db.Stations.Find(id);
+
+            ViewBag.Tid = id;
+
+            ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName");
+
+            StationPost post = new StationPost()
+            {
+                Start = stat.Start,
+                Finnish = stat.Finnish
+            };
+
+            return View(post);
+        }
+
+        // POST: StationPosts/AddPost
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPost(StationPost stationPost, int? StationId)
+        {
+            if (ModelState.IsValid)
+            {
+
+                db.StationPosts.Add(stationPost);
+
+                for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
+                {
+                    if (i < stationPost.Start.Hour || i > stationPost.Finnish.Hour)
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                    else
+                    {
+                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
+                        TimeAtribuition ta = new TimeAtribuition()
+                        {
+                            StationPostId = stationPost.StationPostId,
+                            StationPost = stationPost,
+                            TimeData = trueTimes,
+                            TimeDataId = trueTimes.TimeDataId
+                        };
+
+                        db.TimeAtribuitions.Add(ta);
+                    }
+                }
+
+                Station stat = db.Stations.Find(StationId);
+
+                StationPostsAtribuition sss = new StationPostsAtribuition()
+                {
+                    Station = stat,
+                    StationId = stat.StationId,
+                    StationPost = stationPost,
+                    StationPostId = stationPost.StationPostId
+                };
+
+                db.StationPostsAtribuition.Add(sss);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName", stationPost.RechargeTypeId);
+            return View(stationPost);
+        }
+
+
         public List<StationPost> getPostos(int? id)
         {
             var truePostos = db.StationPostsAtribuition.Where(o => o.StationId == id).Select(l => l.StationPost);
             return truePostos.ToList();
+        }
+
+
+        public List<TimeData> getStationTimes(int? id)
+        {
+            var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);
+            return ttt.ToList();
         }
 
         // GET: Stations/Details/5
@@ -69,6 +163,7 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: Stations/Edit/5
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -93,6 +188,56 @@ namespace TrabPWEB.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                var stationPost = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPostId);
+
+                foreach (int idPost in stationPost)
+                {
+                    var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
+                    //verificar isto
+                    this.Dispose();
+                    //--------------
+                    db.TimeAtribuitions.RemoveRange(times);
+                }
+
+                foreach (int idPost in stationPost)
+                {
+
+                    db.StationPosts.Find(idPost).Start = station.Start;
+                    db.StationPosts.Find(idPost).Finnish = station.Finnish;
+
+                    for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
+                    {
+                        if (i < db.StationPosts.Find(idPost).Start.Hour || i > db.StationPosts.Find(idPost).Finnish.Hour)
+                        {
+                            var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
+                            TimeAtribuition ta = new TimeAtribuition()
+                            {
+                                StationPostId = db.StationPosts.Find(idPost).StationPostId,
+                                StationPost = db.StationPosts.Find(idPost),
+                                TimeData = trueTimes,
+                                TimeDataId = trueTimes.TimeDataId
+                            };
+
+                            db.TimeAtribuitions.Add(ta);
+                        }
+                        else
+                        {
+                            var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
+                            TimeAtribuition ta = new TimeAtribuition()
+                            {
+                                StationPostId = db.StationPosts.Find(idPost).StationPostId,
+                                StationPost = db.StationPosts.Find(idPost),
+                                TimeData = trueTimes,
+                                TimeDataId = trueTimes.TimeDataId
+                            };
+
+                            db.TimeAtribuitions.Add(ta);
+                        }
+                    }
+                    db.Entry(db.StationPosts.Find(idPost)).State = EntityState.Modified;
+                }
+
                 db.Entry(station).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

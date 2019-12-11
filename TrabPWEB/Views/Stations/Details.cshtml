@@ -11,19 +11,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Local.LocalName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Local.LocalName)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.StationName)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.StationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Local.LocalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Local.LocalName)
         </dd>
 
         <dt>
@@ -41,8 +41,66 @@
         <dd>
             @Html.DisplayFor(model => model.Finnish)
         </dd>
-
     </dl>
+
+    <table class="table table-hover table-striped w-auto">
+        <tr>
+            <th>
+                <b> Posto </b>
+            </th>
+            <th>
+                <b> Tipo de Carregamento </b>
+            </th>
+            <th>
+                <b> Horas </b>
+            </th>
+        </tr>
+        @foreach (TrabPWEB.DAL.StationPost itemPosto in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getPostos(Model.StationId))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItemPost => itemPosto.StationPostName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItemPost => itemPosto.RechargeType.RechargeTypeName)
+                </td>
+                <td class="dropdown">
+                    <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660; </p>
+                    <div class="dropdown-menu table-responsive" style="max-height:300px">
+                        <table class="dropdown-item table table-hover table-striped w-auto">
+                            <tr class="dropdown-item">
+                                <th>
+                                    <b>Horas</b>
+                                </th>
+                                <th>
+                                    <b>Disponibilidade</b>
+                                </th>
+                            </tr>
+                            @foreach (TrabPWEB.DAL.TimeData itemTime in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getStationTimes(itemPosto.StationPostId))
+                            {
+                                <tr class="dropdown-item">
+                                    <td>
+                                        @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
+                                    </td>
+                                    <td>
+                                        @if (itemTime.Status)
+                                        {
+                                            <p>Disponível</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Indisponível</p>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.StationId }) |

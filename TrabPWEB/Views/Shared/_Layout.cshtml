@@ -24,12 +24,22 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li style="text-size-adjust:auto">
-                            @Html.ActionLink("Utilizadores", "Index", "UsersAdmin", new { area = "" }, new { @class = ""})
+                            @Html.ActionLink("Utilizadores", "Index", "UsersAdmin", new { area = "" }, new { @class = "" })
                         </li>
                     }
                     <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
                     <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
                 </ul>
+                @using (Html.BeginForm("Index", "Stations", FormMethod.Post, new { @class = "navbar-form navbar-left" }))
+                {
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("procura", null, new { @class = "form-control", @placeholder = "Pesquisar" })
+                    </div>
+                    <button type="submit" class="btn btn-default">Pesquisar</button>
+                }
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TrabPWEB.DAL;
 using TrabPWEB.Models;
+using TrabPWEB.ViewModels;
 
 namespace TrabPWEB.Controllers
 {
@@ -16,10 +17,30 @@ namespace TrabPWEB.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Stations
-        public ActionResult Index()
+        public ActionResult Index(string local, string procura, int? pagina)
         {
+            StationsIndexViewModel svm = new StationsIndexViewModel();
+
             var stations = db.Stations.Include(s => s.Local);
-            return View(stations.ToList());
+
+            if (!String.IsNullOrEmpty(procura))
+            {
+                stations = stations.Where(s => s.Local.LocalName.Contains(procura));
+                svm.Procura = procura;
+            }
+
+            if (!String.IsNullOrEmpty(local))
+            {
+                stations = stations.Where(l => l.Local.Equals(local));
+                svm.Local = local;
+            }
+
+            int nreg = 5;
+            int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
+
+            svm.OrdenarEstacoes(stations, pag, nreg);
+
+            return View(svm);
         }
 
         // GET: StationPosts/AddPost

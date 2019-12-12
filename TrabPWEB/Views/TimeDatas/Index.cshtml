@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TrabPWEB.DAL.TimeData>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Horários";
 }
 
-<h2>Index</h2>
+<h2>Horários</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Horário", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TimeDataId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TimeDataId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TimeDataId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.TimeDataId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.TimeDataId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.TimeDataId })
         </td>
     </tr>
 }

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TrabPWEB.DAL.RechargeType>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tipo de Carregador";
 }
 
-<h2>Index</h2>
+<h2>Tipo de Carregador</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Carregador", "Create")
 </p>
 <table class="table table-striped w-auto">
     <tr>
@@ -26,13 +26,13 @@
         <td>
             @Html.DisplayFor(modelItem => item.RechargeTypeName)
         </td>
-        <td>
+        <td style="text-align:justify">
             @Html.DisplayFor(modelItem => item.RechargeTypeDescription)
         </td>
-        <td style="min-width:150px">
-            @Html.ActionLink("Edit", "Edit", new { id = item.RechargeTypeId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.RechargeTypeId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.RechargeTypeId })
+        <td class="text-nowrap" style="min-width:150px">
+            @Html.ActionLink("Editar", "Edit", new { id = item.RechargeTypeId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id = item.RechargeTypeId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id = item.RechargeTypeId })
         </td>
     </tr>
 }

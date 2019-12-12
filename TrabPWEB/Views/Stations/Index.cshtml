@@ -2,14 +2,20 @@
 @using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Estações";
 }
 
-<h2>Index</h2>
+<h2>Estações</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Owner"))
+    {
+        <p>
+            @Html.ActionLink("Nova Estação", "Create")
+        </p>
+    }
+}
 <table class="table table-hover table-striped w-auto">
     <tr>
         <th>
@@ -106,10 +112,10 @@
                 </table>
             </td>
             <td>
-                @Html.ActionLink("Adicionar novo Posto", "AddPost", new { id = item.StationId }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.StationId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StationId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StationId })
+                @Html.ActionLink("Adicionar Novo Posto", "AddPost", new { id = item.StationId }) |
+                @Html.ActionLink("Editar", "Edit", new { id = item.StationId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.StationId }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.StationId })
             </td>
         </tr>
     }
@@ -118,5 +124,5 @@
 
 <div>
     Página @(Model.Stations.PageCount < Model.Stations.PageNumber ? 0 : Model.Stations.PageNumber) de @Model.Stations.PageCount
-    @Html.PagedListPager(Model.Stations, pagina => Url.Action("Index", new { local = @Model.Local, procura = @Model.Procura, pagina }))
+    @Html.PagedListPager(Model.Stations, pagina => Url.Action("Estações", new { local = @Model.Local, procura = @Model.Procura, pagina }))
 </div>

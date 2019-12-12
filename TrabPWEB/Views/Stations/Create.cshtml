@@ -1,10 +1,10 @@
 ﻿@model TrabPWEB.DAL.Station
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar Nova Estação";
 }
 
-<h2>Create</h2>
+    <h2>Criar Nova Estação</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Station</h4>
+        <h4>Estação</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LocalId, "LocalId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LocalId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("LocalId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.LocalId, "", new { @class = "text-danger" })
@@ -49,14 +49,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar atrás", "Index")
 </div>
 
 @section Scripts {

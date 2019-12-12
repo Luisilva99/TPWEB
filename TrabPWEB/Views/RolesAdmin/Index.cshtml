@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Roles";
 }
 
-<h2>Index</h2>
+<h2>Roles</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nova Role", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <b>Nome</b>
         </th>
         <th>
 
@@ -21,15 +21,20 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
+        @if (!item.Name.Equals("Admin"))
+        {
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+
+            @Html.DisplayFor(modelItem => item.Name)
+            
+           </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                <a href="@Url.Action("Delete", "RolesAdmin", new { @id=item.Id })" onclick="return confirm('Are you sure you want to delete the role @item.Name');">Delete</a>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                <a href="@Url.Action("Delete", "RolesAdmin", new { @id = item.Id })" onclick="return confirm('Tem a certeza que quer remover a role @item.Name');">Apagar</a>
             </td>
-        </tr>
+        }
+    </tr>
     }
 
 </table>

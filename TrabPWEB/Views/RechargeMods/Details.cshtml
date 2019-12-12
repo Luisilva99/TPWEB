@@ -1,13 +1,13 @@
 ﻿@model TrabPWEB.DAL.RechargeMod
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+    <h2>Detalhes</h2>
 
 <div>
-    <h4>RechargeMod</h4>
+    <h4>Tipos de carregamento</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -22,13 +22,13 @@
             @Html.DisplayNameFor(model => model.RechargeModDescription)
         </dt>
 
-        <dd>
+        <dd style="text-align:justify">
             @Html.DisplayFor(model => model.RechargeModDescription)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RechargeModId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.RechargeModId }) |
+    @Html.ActionLink("Voltar atrás", "Index")
 </p>

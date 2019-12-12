@@ -30,7 +30,7 @@ namespace TrabPWEB.Controllers
             }
             else
             {
-                return View("~/Views/Home/Index.cshtml");
+                return View();
             }
 
             //if (!String.IsNullOrEmpty(local))

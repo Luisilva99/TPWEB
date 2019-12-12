@@ -22,7 +22,7 @@ namespace TrabPWEB
 
         public ActionResult Index()
         {
-            return View();
+            return View("~/Views/Home/Index.cshtml");
         }
 
         [HttpPost]

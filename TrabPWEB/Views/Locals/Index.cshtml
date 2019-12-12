@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TrabPWEB.DAL.Local>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Locais";
 }
 
-<h2>Index</h2>
+<h2>Locais</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Novo Local", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.Region.RegionName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LocalId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LocalId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LocalId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.LocalId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.LocalId }) |
+            @Html.ActionLink("Apagar", "Delete", new { id=item.LocalId })
         </td>
     </tr>
 }

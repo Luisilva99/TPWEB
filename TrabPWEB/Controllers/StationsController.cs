@@ -30,7 +30,8 @@ namespace TrabPWEB.Controllers
             }
             else
             {
-                return View();
+                // AJUDA - É preciso que quando se clique no "Pesquisar" quando não tem nada (null) fique na mesma página, ou seja, Home/Index
+                //         Porém o Redirect e assim dão mas depois se quiser ir às Stations pelo URL não dá :/
             }
 
             //if (!String.IsNullOrEmpty(local))

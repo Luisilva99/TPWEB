@@ -11,6 +11,15 @@
     <h4>Posto de Carregamento</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StationPostName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StationPostName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.RechargeType.RechargeTypeName)
         </dt>
@@ -20,11 +29,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StationPostName)
+            @Html.DisplayNameFor(model => model.Price)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StationPostName)
+            @Html.DisplayFor(model => model.Price, "{0:#######.##}")€
         </dd>
 
         <dt>

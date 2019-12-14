@@ -602,6 +602,14 @@
     <Compile Include="Migrations\201912140037092_Onehundered-One.Designer.cs">
       <DependentUpon>201912140037092_Onehundered-One.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912141144388_Onehundred-Two.cs" />
+    <Compile Include="Migrations\201912141144388_Onehundred-Two.Designer.cs">
+      <DependentUpon>201912141144388_Onehundred-Two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912141152512_Onehundred-Three.cs" />
+    <Compile Include="Migrations\201912141152512_Onehundred-Three.Designer.cs">
+      <DependentUpon>201912141152512_Onehundred-Three.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1037,6 +1045,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912140037092_Onehundered-One.resx">
       <DependentUpon>201912140037092_Onehundered-One.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141144388_Onehundred-Two.resx">
+      <DependentUpon>201912141144388_Onehundred-Two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141152512_Onehundred-Three.resx">
+      <DependentUpon>201912141152512_Onehundred-Three.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

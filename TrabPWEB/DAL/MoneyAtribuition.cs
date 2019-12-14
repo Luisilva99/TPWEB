@@ -21,7 +21,7 @@ namespace TrabPWEB.DAL
 
         [Required]
         [DataType(DataType.Currency)]
-        [DisplayFormat(DataFormatString = "{0:C#######.##}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:#######.##}", ApplyFormatInEditMode = true)]
         [Display(Name = "Saldo")]
         public decimal Cash { get; set; }
     }

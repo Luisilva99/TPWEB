@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<TrabPWEB.DAL.StationPost>
 
 @{
-    ViewBag.Title = "Postos de carregamento";
+    ViewBag.Title = "Postos de Carregamento";
 }
 
 <h2>Postos de Carregamento</h2>
@@ -16,6 +16,9 @@
         </th>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.RechargeType.RechargeTypeName)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Price)
         </th>
         <th class="text-center">
             @Html.DisplayNameFor(model => model.Start)
@@ -36,6 +39,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RechargeType.RechargeTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price, "{0:#######.##}")€
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Start, "{0:HH:mm}")

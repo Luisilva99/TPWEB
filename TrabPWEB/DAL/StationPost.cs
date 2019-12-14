@@ -38,5 +38,12 @@ namespace TrabPWEB.DAL
         public DateTime Finnish { get; set; }
         //------------------------
 
+
+        [Required(ErrorMessage = "Obrigatório introduzir um valor a pagar por hora de reserva.")]
+        [DataType(DataType.Currency)]
+        [DisplayFormat(DataFormatString = "{0:#######.##}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Preço")]
+        public decimal Price { get; set; }
+
     }
 }

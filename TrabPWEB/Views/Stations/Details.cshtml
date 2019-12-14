@@ -52,6 +52,9 @@
                 <b> Tipo de Carregamento </b>
             </th>
             <th class="text-center">
+                <b> Preço </b>
+            </th>
+            <th class="text-center">
                 <b> Horas </b>
             </th>
         </tr>
@@ -63,6 +66,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItemPost => itemPosto.RechargeType.RechargeTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItemPost => itemPosto.Price)€
                 </td>
                 <td class="dropdown">
                     <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660; </p>

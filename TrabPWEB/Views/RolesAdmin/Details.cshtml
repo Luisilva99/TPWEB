@@ -25,12 +25,12 @@
     <p>Não existem utilizadores para esta role.</p>
 }
 
-<table class="table">
+<table class="table table-hover table-striped w-auto text-center">
 
     @foreach (var item in ViewBag.Users)
     {
         <tr>
-            <td>
+            <td class="text-center">
                 @item.UserName
             </td>
         </tr>

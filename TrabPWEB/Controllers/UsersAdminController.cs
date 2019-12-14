@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TrabPWEB.DAL;
 
 namespace TrabPWEB
 {
@@ -104,6 +105,16 @@ namespace TrabPWEB
                             return View();
                         }
                     }
+                    //Assossiação do utilizador ao seu saldo de conta
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    MoneyAtribuition money = new MoneyAtribuition()
+                    {
+                        UserId = user.Id,
+                        Cash = new decimal()
+                    };
+                    db.MoneyAtribuitions.Add(money);
+                    db.SaveChanges();
+                    //-----------------------------------------------
                 }
                 else
                 {
@@ -228,9 +239,54 @@ namespace TrabPWEB
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
+
+                //Eliminação do Saldo assossiado ao Utilizador
+                ApplicationDbContext db = new ApplicationDbContext();
+
+                MoneyAtribuition thisAtribution = db.MoneyAtribuitions.Where(o => o.UserId.Equals(user.Id)).Single();
+                db.MoneyAtribuitions.Remove(thisAtribution);
+                db.SaveChanges();
+                //--------------------------------------------
+
                 return RedirectToAction("Index");
             }
             return View();
         }
+
+        //
+        //Get Saldo de conta do utilizador
+        public decimal getUserSaldo(string userId)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            decimal money = db.MoneyAtribuitions.Where(o => o.UserId == userId).Select(o => o.Cash).Single();
+            return money;
+        }
+
+        public async Task<ActionResult> AddMoney(string id, decimal? valueToAdd)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (valueToAdd == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var user = await UserManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            ApplicationDbContext db = new ApplicationDbContext();
+            decimal money = db.MoneyAtribuitions.Where(o => o.UserId == user.Id).Select(o => o.Cash).Single();
+            money += (decimal) valueToAdd;
+
+            db.MoneyAtribuitions.Where(k => k.UserId.Equals(user.Id)).Single().Cash = money;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

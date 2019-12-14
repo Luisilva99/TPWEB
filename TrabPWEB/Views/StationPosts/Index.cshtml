@@ -9,21 +9,21 @@
 <p>
     @Html.ActionLink("Novo Posto", "Create")
 </p>
-<table class="table table-hover table-striped w-auto">
+<table class="table table-hover table-striped w-auto text-center">
     <tr>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.StationPostName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.RechargeType.RechargeTypeName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Start)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Finnish)
         </th>
-        <th>
+        <th class="text-center">
             <b>Horários</b>
         </th>
         <th></th>
@@ -46,12 +46,12 @@
         <td class="dropdown">
             <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660;</p>
             <div class="dropdown-menu table-responsive" style="max-height:300px">
-                <table class="table table-hover table-striped w-auto">
+                <table class="table table-hover table-striped w-auto text-center">
                     <tr class="dropdown-item">
-                        <th>
+                        <th class="text-center">
                             <b>Horas</b>
                         </th>
-                        <th>
+                        <th class="text-center">
                             <b>Disponibilidade</b>
                         </th>
                     </tr>

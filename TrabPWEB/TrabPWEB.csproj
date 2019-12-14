@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Chart.Mvc, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Chart.Mvc.1.0.0.2\lib\net45\Chart.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -187,6 +190,7 @@
     <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
+    <Compile Include="DAL\MoneyAtribuition.cs" />
     <Compile Include="DAL\RechargeMod.cs" />
     <Compile Include="DAL\RechargeType.cs" />
     <Compile Include="DAL\Region.cs" />
@@ -594,6 +598,10 @@
     <Compile Include="Migrations\201912101608024_Onehundred.Designer.cs">
       <DependentUpon>201912101608024_Onehundred.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912140037092_Onehundered-One.cs" />
+    <Compile Include="Migrations\201912140037092_Onehundered-One.Designer.cs">
+      <DependentUpon>201912140037092_Onehundered-One.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -613,6 +621,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -622,6 +632,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -1022,6 +1034,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912101608024_Onehundred.resx">
       <DependentUpon>201912101608024_Onehundred.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912140037092_Onehundered-One.resx">
+      <DependentUpon>201912140037092_Onehundered-One.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

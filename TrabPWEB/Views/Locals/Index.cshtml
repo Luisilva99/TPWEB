@@ -9,12 +9,12 @@
 <p>
     @Html.ActionLink("Novo Local", "Create")
 </p>
-<table class="table">
+<table class="table table-hover table-striped w-auto text-center">
     <tr>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.LocalName)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Region.RegionName)
         </th>
         <th></th>
@@ -28,7 +28,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Region.RegionName)
         </td>
-        <td>
+        <td class="text-nowrap">
             @Html.ActionLink("Editar", "Edit", new { id=item.LocalId }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.LocalId }) |
             @Html.ActionLink("Apagar", "Delete", new { id=item.LocalId })

@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using TrabPWEB.DAL;
 using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
@@ -166,6 +167,17 @@ namespace TrabPWEB.Controllers
                     //Adição do novo utilizador ao Role de Client
                     UserManager.AddToRole(user.Id, "Client");
                     //-------------------------------------------
+
+                    //Assossiação do utilizador ao seu saldo de conta
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    MoneyAtribuition money = new MoneyAtribuition()
+                    {
+                        UserId = user.Id,
+                        Cash = new decimal()
+                    };
+                    db.MoneyAtribuitions.Add(money);
+                    db.SaveChanges();
+                    //-----------------------------------------------
 
                     return RedirectToAction("Index", "Home");
                 }

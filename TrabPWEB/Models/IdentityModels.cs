@@ -31,7 +31,7 @@ namespace TrabPWEB.Models
             return new ApplicationDbContext();
         }
 
-
+        //-------------------Dados------------------//
         public DbSet<Region> Regions { get; set; }
         public DbSet<Local> Locals { get; set; }
         public DbSet<Station> Stations { get; set; }
@@ -39,8 +39,12 @@ namespace TrabPWEB.Models
         public DbSet<StationPost> StationPosts { get; set; }
         public DbSet<RechargeMod> RechargeMods { get; set; }
         public DbSet<RechargeType> RechargeTypes { get; set; }
+        //------------------------------------------//
 
+        //----------------Atribuições---------------//
         public DbSet<TimeAtribuition> TimeAtribuitions { get; set; }
         public DbSet<StationPostsAtribuition> StationPostsAtribuition { get; set; }
+        public DbSet<MoneyAtribuition> MoneyAtribuitions { get; set; }
+        //------------------------------------------//
     }
 }

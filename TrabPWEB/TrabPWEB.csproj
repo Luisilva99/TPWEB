@@ -184,7 +184,6 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RechargeModsController.cs" />
     <Compile Include="Controllers\RechargeTypesController.cs" />
-    <Compile Include="Controllers\ReservesController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StationPostsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
@@ -621,6 +620,14 @@
     <Compile Include="Migrations\201912141318239_Onehundred-Five.Designer.cs">
       <DependentUpon>201912141318239_Onehundred-Five.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912141721238_Onehundred-Six.cs" />
+    <Compile Include="Migrations\201912141721238_Onehundred-Six.Designer.cs">
+      <DependentUpon>201912141721238_Onehundred-Six.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912141722028_Onehundred-Seven.cs" />
+    <Compile Include="Migrations\201912141722028_Onehundred-Seven.Designer.cs">
+      <DependentUpon>201912141722028_Onehundred-Seven.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -741,11 +748,6 @@
     <Content Include="Views\Stations\Edit.cshtml" />
     <Content Include="Views\Stations\Index.cshtml" />
     <Content Include="Views\Stations\AddPost.cshtml" />
-    <Content Include="Views\Reserves\Create.cshtml" />
-    <Content Include="Views\Reserves\Delete.cshtml" />
-    <Content Include="Views\Reserves\Details.cshtml" />
-    <Content Include="Views\Reserves\Edit.cshtml" />
-    <Content Include="Views\Reserves\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1073,6 +1075,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912141318239_Onehundred-Five.resx">
       <DependentUpon>201912141318239_Onehundred-Five.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141721238_Onehundred-Six.resx">
+      <DependentUpon>201912141721238_Onehundred-Six.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141722028_Onehundred-Seven.resx">
+      <DependentUpon>201912141722028_Onehundred-Seven.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

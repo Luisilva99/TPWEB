@@ -9,28 +9,35 @@ namespace TrabPWEB.DAL
 {
     public class Reserve
     {
+
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int ReserveId { get; set; }
 
-        [Required]
-        [Display(Name = "Estação de Carregamento")]
-        public int StationPostId { get; set; }
-
-        [Required]
-        [Display(Name = "Local")]
-        public int LocalId { get; set; }
 
         [Required]
         public string UserId { get; set; }
 
+
+        [Required]
+        [Display(Name = "Posto de Carregamento")]
+        public int StationPostId { get; set; }
+
+        [ForeignKey("StationPostId")]
+        public virtual StationPost StationPost { get; set; }
+
+
         [Required]
         [DataType(DataType.Time)]
-        [Display(Name = "Horário da reserva")]
+        [Display(Name = "Data da reserva")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
 
+
+        //0 - Canceled; 1 - onGoing; 2 - Completed;
         [Display(Name = "Estado da reserva")]
-        public Boolean status { get; set; }
+        [RegularExpression("[0-2]{1}$", ErrorMessage = "Não é um estado de reserva plausivel.")]
+        public int Completed { get; set; }
+
     }
 }

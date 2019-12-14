@@ -92,6 +92,7 @@
                                         @if (itemTime.Status)
                                         {
                                             <p>Disponível</p>
+                                            @*Colocar aqui a função de Reservar*@
                                         }
                                         else
                                         {
@@ -108,7 +109,16 @@
     </table>
 
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.StationId }) |
-    @Html.ActionLink("Voltar atrás", "Index")
-</p>
+@if (User.IsInRole("Owner") || User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.StationId }) |
+        @Html.ActionLink("Voltar atrás", "Index")
+    </p>
+}
+@if (User.IsInRole("Client"))
+{
+    <p>
+        @Html.ActionLink("Voltar atrás", "Index")
+    </p>
+}

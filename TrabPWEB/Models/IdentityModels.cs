@@ -39,6 +39,7 @@ namespace TrabPWEB.Models
         public DbSet<StationPost> StationPosts { get; set; }
         public DbSet<RechargeMod> RechargeMods { get; set; }
         public DbSet<RechargeType> RechargeTypes { get; set; }
+        public DbSet<Reserve> Reserves { get; set; }
         //------------------------------------------//
 
         //----------------Atribuições---------------//

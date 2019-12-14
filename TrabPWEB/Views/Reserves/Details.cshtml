@@ -1,0 +1,58 @@
+﻿@model TrabPWEB.DAL.Reserve
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StationPostId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StationPostId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LocalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocalId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ReserveId }) |
+    @Html.ActionLink("Voltar atrás", "Index")
+</p>

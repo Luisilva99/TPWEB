@@ -45,6 +45,7 @@ namespace TrabPWEB.Models
         //----------------Atribuições---------------//
         public DbSet<TimeAtribuition> TimeAtribuitions { get; set; }
         public DbSet<StationPostsAtribuition> StationPostsAtribuition { get; set; }
+        public DbSet<StationAtribution> StationAtributions { get; set; }
         public DbSet<MoneyAtribuition> MoneyAtribuitions { get; set; }
         //------------------------------------------//
     }

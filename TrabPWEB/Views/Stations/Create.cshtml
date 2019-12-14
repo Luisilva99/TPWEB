@@ -49,6 +49,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
+                @if (User.IsInRole("Owner"))
+                {
+                    <input type="hidden" name="UserName" value="@User.Identity.Name" />
+                }
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
         </div>

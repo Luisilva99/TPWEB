@@ -51,73 +51,40 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Finnish)
             </td>
-            <td>
-                <table class="table table-hover table-striped w-auto text-center">
-                    <tr>
-                        <th class="text-center">
-                            <b> Posto </b>
-                        </th>
-                        <th class="text-center">
-                            <b> Tipo de Carregamento </b>
-                        </th>
-                        <th class="text-center">
-                            <b> Preço </b>
-                        </th>
-                        <th class="text-center">
-                            <b> Horas </b>
-                        </th>
-                        <th></th>
-                    </tr>
-                    @foreach (TrabPWEB.DAL.StationPost itemPosto in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getPostos(item.StationId))
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItemPost => itemPosto.StationPostName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItemPost => itemPosto.RechargeType.RechargeTypeName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItemPost => itemPosto.Price, "{0:#######.##}")€
-                            </td>
-                            <td class="dropdown">
-                                <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660;</p>
-                                <div class="dropdown-menu table-responsive" style="max-height:300px">
-                                    <table class="dropdown-item table table-hover table-striped w-auto text-center">
-                                        <tr class="dropdown-item">
-                                            <th class="text-center">
-                                                <b>Horas</b>
-                                            </th>
-                                            <th class="text-center">
-                                                <b>Disponibilidade</b>
-                                            </th>
-                                        </tr>
-                                        @foreach (TrabPWEB.DAL.TimeData itemTime in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getStationTimes(itemPosto.StationPostId))
-                                        {
-                                            <tr class="dropdown-item">
-                                                <td>
-                                                    @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
-                                                </td>
-                                                <td>
-                                                    @if (itemTime.Status)
-                                                    {
-                                                        <p>Disponível</p>
-                                                    }
-                                                    else
-                                                    {
-                                                        <p>Indisponível</p>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        }
-                                    </table>
-                                </div>
-                            </td>
+            <td class="dropdown">
+                <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Postos &#9660;</p>
+                <div class="dropdown-menu table-responsive" style="max-height:300px">
+                    <table class="dropdown-item table table-hover table-striped w-auto text-center">
+                        <tr class="dropdown-item">
+                            <th class="text-center">
+                                <b> Posto </b>
+                            </th>
+                            <th class="text-center">
+                                <b> Tipo de Carregamento </b>
+                            </th>
+                            <th class="text-center">
+                                <b> Preço/Hora </b>
+                            </th>
+                            <th></th>
                         </tr>
-                    }
-                </table>
+                        @foreach (TrabPWEB.DAL.StationPost itemPosto in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getPostos(item.StationId))
+                        {
+                            <tr class="dropdown-item">
+                                <td>
+                                    @Html.DisplayFor(modelItemPost => itemPosto.StationPostName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItemPost => itemPosto.RechargeType.RechargeTypeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItemPost => itemPosto.Price, "{0:#######.##}")€
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
             </td>
-            <td>
+            <td class="text-nowrap">
                 @Html.ActionLink("Adicionar Novo Posto", "AddPost", new { id = item.StationId }) |
                 @Html.ActionLink("Editar", "Edit", new { id = item.StationId }) |
                 @Html.ActionLink("Detalhes", "Details", new { id = item.StationId }) |

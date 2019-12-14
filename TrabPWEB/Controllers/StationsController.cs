@@ -34,16 +34,6 @@ namespace TrabPWEB.Controllers
                 //         Porém o Redirect e assim dão mas depois se quiser ir às Stations pelo URL não dá :/
             }
 
-            //if (!String.IsNullOrEmpty(local))
-            //{
-            //    stations = stations.Where(l => l.Local.Equals(local));
-            //    svm.Local = local;
-            //}
-            //else
-            //{
-            //    return View("~/Views/Home/Index.cshtml");
-            //}
-
             int nreg = 5;
             int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
 
@@ -179,10 +169,22 @@ namespace TrabPWEB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StationId,StationName,LocalId,Start,Finnish")] Station station)
+        public ActionResult Create(Station station, string UserName)
         {
             if (ModelState.IsValid)
             {
+
+                //Atribuição ao Owner da Estação de carregamento
+                var user = db.Users.Where(o => o.UserName.Equals(UserName)).Single();
+                StationAtribution sa = new StationAtribution()
+                {
+                    UserId = user.Id,
+                    Station = station,
+                    StationId = station.StationId
+                };
+                db.StationAtributions.Add(sa);
+                //----------------------------------------------
+
                 db.Stations.Add(station);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -221,45 +223,48 @@ namespace TrabPWEB.Controllers
 
                 var stationPost = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPostId);
                 
-                foreach (int idPost in stationPost)
+                if(stationPost != null)
                 {
-                    var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
-
-                    db.TimeAtribuitions.RemoveRange(times);
-
-                    db.StationPosts.Find(idPost).Start = station.Start;
-                    db.StationPosts.Find(idPost).Finnish = station.Finnish;
-
-                    for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
+                    foreach (int idPost in stationPost)
                     {
-                        if (i < db.StationPosts.Find(idPost).Start.Hour || i > db.StationPosts.Find(idPost).Finnish.Hour)
-                        {
-                            var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
-                            TimeAtribuition ta = new TimeAtribuition()
-                            {
-                                StationPostId = db.StationPosts.Find(idPost).StationPostId,
-                                StationPost = db.StationPosts.Find(idPost),
-                                TimeData = trueTimes,
-                                TimeDataId = trueTimes.TimeDataId
-                            };
+                        var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
 
-                            db.TimeAtribuitions.Add(ta);
-                        }
-                        else
-                        {
-                            var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
-                            TimeAtribuition ta = new TimeAtribuition()
-                            {
-                                StationPostId = db.StationPosts.Find(idPost).StationPostId,
-                                StationPost = db.StationPosts.Find(idPost),
-                                TimeData = trueTimes,
-                                TimeDataId = trueTimes.TimeDataId
-                            };
+                        db.TimeAtribuitions.RemoveRange(times);
 
-                            db.TimeAtribuitions.Add(ta);
+                        db.StationPosts.Find(idPost).Start = station.Start;
+                        db.StationPosts.Find(idPost).Finnish = station.Finnish;
+
+                        for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
+                        {
+                            if (i < db.StationPosts.Find(idPost).Start.Hour || i > db.StationPosts.Find(idPost).Finnish.Hour)
+                            {
+                                var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
+                                TimeAtribuition ta = new TimeAtribuition()
+                                {
+                                    StationPostId = db.StationPosts.Find(idPost).StationPostId,
+                                    StationPost = db.StationPosts.Find(idPost),
+                                    TimeData = trueTimes,
+                                    TimeDataId = trueTimes.TimeDataId
+                                };
+
+                                db.TimeAtribuitions.Add(ta);
+                            }
+                            else
+                            {
+                                var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
+                                TimeAtribuition ta = new TimeAtribuition()
+                                {
+                                    StationPostId = db.StationPosts.Find(idPost).StationPostId,
+                                    StationPost = db.StationPosts.Find(idPost),
+                                    TimeData = trueTimes,
+                                    TimeDataId = trueTimes.TimeDataId
+                                };
+
+                                db.TimeAtribuitions.Add(ta);
+                            }
                         }
+                        db.Entry(db.StationPosts.Find(idPost)).State = EntityState.Modified;
                     }
-                    db.Entry(db.StationPosts.Find(idPost)).State = EntityState.Modified;
                 }
 
                 db.Entry(station).State = EntityState.Modified;
@@ -288,27 +293,46 @@ namespace TrabPWEB.Controllers
         // POST: Stations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, string UserName)
         {
+            if (UserName == null || UserName.Length == 0)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
 
             Station station = db.Stations.Find(id);
 
+            //Eliminação da atribuição do Owner à estação de carregamento
+            var user = db.Users.Where(o => o.UserName.Equals(UserName)).Single();
+            StationAtribution sa = db.StationAtributions.Where(o => o.UserId.Equals(user.Id)).Single();
+            db.StationAtributions.Remove(sa);
+            //-----------------------------------------------------------
+
             var stationPost = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPostId);
 
-            foreach (int idPost in stationPost)
+            if(stationPost != null)
             {
-                var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
+                foreach (int idPost in stationPost)
+                {
+                    var times = db.TimeAtribuitions.Where(o => o.StationPostId == idPost);
 
-                db.TimeAtribuitions.RemoveRange(times);
+                    db.TimeAtribuitions.RemoveRange(times);
+                }
             }
 
             var stationPostTrue = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId).Select(o => o.StationPost);
 
-            db.StationPosts.RemoveRange(stationPostTrue);
+            if(stationPostTrue != null)
+            {
+                db.StationPosts.RemoveRange(stationPostTrue);
+            }
 
             var stationsAtt = db.StationPostsAtribuition.Where(o => o.StationId == station.StationId);
 
-            db.StationPostsAtribuition.RemoveRange(stationsAtt);
+            if(stationsAtt != null)
+            {
+                db.StationPostsAtribuition.RemoveRange(stationsAtt);
+            }
 
             db.Stations.Remove(station);
             db.SaveChanges();

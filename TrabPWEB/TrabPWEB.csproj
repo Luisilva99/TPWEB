@@ -197,6 +197,7 @@
     <Compile Include="DAL\Region.cs" />
     <Compile Include="DAL\Reserve.cs" />
     <Compile Include="DAL\Station.cs" />
+    <Compile Include="DAL\StationAtribution.cs" />
     <Compile Include="DAL\StationPost.cs" />
     <Compile Include="DAL\StationPostsAtribuition.cs" />
     <Compile Include="DAL\TimeAtribuition.cs" />
@@ -615,6 +616,10 @@
     <Compile Include="Migrations\201912141242453_OneHundred-Four.cs" />
     <Compile Include="Migrations\201912141242453_OneHundred-Four.Designer.cs">
       <DependentUpon>201912141242453_OneHundred-Four.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912141318239_Onehundred-Five.cs" />
+    <Compile Include="Migrations\201912141318239_Onehundred-Five.Designer.cs">
+      <DependentUpon>201912141318239_Onehundred-Five.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1065,6 +1070,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912141242453_OneHundred-Four.resx">
       <DependentUpon>201912141242453_OneHundred-Four.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912141318239_Onehundred-Five.resx">
+      <DependentUpon>201912141318239_Onehundred-Five.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

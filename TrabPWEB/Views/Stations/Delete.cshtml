@@ -49,6 +49,10 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
+            @if (User.IsInRole("Owner"))
+            {
+                <input type="hidden" name="UserName" value="@User.Identity.Name" />
+            }
             <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Voltar atrás", "Index")
         </div>

@@ -152,11 +152,11 @@ namespace TrabPWEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, PhoneNumber = model.PhoneNumber, RememberMe = model.RememberMe };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await SignInManager.SignInAsync(user, isPersistent:true, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -178,6 +178,12 @@ namespace TrabPWEB.Controllers
                     db.MoneyAtribuitions.Add(money);
                     db.SaveChanges();
                     //-----------------------------------------------
+
+                    //Tentativa de arranjo---------------------------
+                    LogOff();
+                    await SignInManager.PasswordSignInAsync(model.Email, model.Password, false, shouldLockout: false);
+                    //-----------------------------------------------
+
 
                     return RedirectToAction("Index", "Home");
                 }

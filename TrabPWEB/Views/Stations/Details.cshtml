@@ -45,16 +45,16 @@
 
     <table class="table table-hover table-striped w-auto text-center">
         <tr>
-            <th class="text-center">
+            <th class="text-center text-nowrap">
                 <b> Posto </b>
             </th>
-            <th class="text-center">
+            <th class="text-center text-nowrap">
                 <b> Tipo de Carregamento </b>
             </th>
-            <th class="text-center">
+            <th class="text-center text-nowrap">
                 <b> Preço/Hora </b>
             </th>
-            <th class="text-center">
+            <th class="text-center text-nowrap">
                 <b> Horas </b>
             </th>
         </tr>
@@ -68,38 +68,60 @@
                     @Html.DisplayFor(modelItemPost => itemPosto.RechargeType.RechargeTypeName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItemPost => itemPosto.Price)€
+                    @Html.DisplayFor(modelItemPost => itemPosto.Price) €
                 </td>
                 <td class="dropdown">
-                    <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660; </p>
+                    @if (User.IsInRole("Client"))
+                    {
+                        <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas de Reserva &#9660; </p>
+                    }
+                    else
+                    {
+                        <p class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" style="color:blue">Horas &#9660; </p>
+                    }
                     <div class="dropdown-menu table-responsive" style="max-height:300px">
                         <table class="dropdown-item table table-hover table-striped w-auto text-center">
                             <tr class="dropdown-item">
-                                <th class="text-center">
+                                <th class="text-center text-nowrap">
                                     <b>Horas</b>
                                 </th>
-                                <th class="text-center">
+                                <th class="text-center text-nowrap">
                                     <b>Disponibilidade</b>
                                 </th>
+                                <th></th>
                             </tr>
                             @foreach (TrabPWEB.DAL.TimeData itemTime in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getStationTimes(itemPosto.StationPostId))
                             {
-                                <tr class="dropdown-item">
-                                    <td>
-                                        @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
-                                    </td>
-                                    <td>
-                                        @if (itemTime.Status)
-                                        {
-                                            <p>Disponível</p>
-                                            @*Colocar aqui a função de Reservar*@
-                                        }
-                                        else
-                                        {
-                                            <p>Indisponível</p>
-                                        }
-                                    </td>
-                                </tr>
+                            <tr class="dropdown-item text-center">
+                                <td>
+                                    @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
+                                </td>
+                                <td>
+                                    @if (itemTime.Status)
+                                    {
+                                        <p>Disponível</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Indisponível</p>
+                                    }
+                                </td>
+                                @if (User.IsInRole("Client"))
+                                {
+                                    if (itemTime.Status)
+                                    {
+                                        <td>
+                                            @Html.ActionLink("Reservar", "ReservThisPost", new { id = itemPosto.StationPostId, timeId = itemTime.TimeDataId, userName = User.Identity.Name })
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            <p>Indisponível para Reservar</p>
+                                        </td>
+                                    }
+                                }
+                            </tr>
                             }
                         </table>
                     </div>

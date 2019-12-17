@@ -69,16 +69,20 @@ namespace TrabPWEB.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+
         [Required]
         [StringLength(100, ErrorMessage = "A {0} tem de ter {2} caracteres no mínimo.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Password")]
         [Compare("Password", ErrorMessage = "A password e a password de confirmação não são iguais não.")]
         public string ConfirmPassword { get; set; }
+
+
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Contacto")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Não é um número de telemóvel / telefone válido.")]

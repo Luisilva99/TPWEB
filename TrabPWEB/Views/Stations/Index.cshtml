@@ -18,19 +18,19 @@
 }
 <table class="table table-hover table-striped w-auto text-center">
     <tr>
-        <th class="text-center">
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Stations.First().StationName)
         </th>
-        <th class="text-center">
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Stations.First().Local.LocalName)
         </th>
-        <th class="text-center">
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Stations.First().Start)
         </th>
-        <th class="text-center">
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Stations.First().Finnish)
         </th>
-        <th class="text-center">
+        <th class="text-center text-nowrap">
             <b>Postos de Carregamento</b>
         </th>
         <th></th>
@@ -56,20 +56,20 @@
             <div class="dropdown-menu table-responsive" style="max-height:300px">
                 <table class="dropdown-item table table-hover table-striped w-auto text-center">
                     <tr class="dropdown-item">
-                        <th class="text-center">
+                        <th class="text-center text-nowrap">
                             <b> Posto </b>
                         </th>
-                        <th class="text-center">
+                        <th class="text-center text-nowrap">
                             <b> Tipo de Carregamento </b>
                         </th>
-                        <th class="text-center">
+                        <th class="text-center text-nowrap">
                             <b> Preço/Hora </b>
                         </th>
                         <th></th>
                     </tr>
                     @foreach (TrabPWEB.DAL.StationPost itemPosto in ((TrabPWEB.Controllers.StationsController)this.ViewContext.Controller).getPostos(item.StationId))
                     {
-                        <tr class="dropdown-item">
+                        <tr class="dropdown-item text-nowrap">
                             <td>
                                 @Html.DisplayFor(modelItemPost => itemPosto.StationPostName)
                             </td>
@@ -78,9 +78,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItemPost => itemPosto.Price, "{0:#######.##}")€
-                            </td>
-                            <td class="text-nowrap">
-                                @Html.ActionLink("Reservar deste Posto", "ReservPost", new { id = itemPosto.StationPostId })
                             </td>
                         </tr>
                     }
@@ -99,7 +96,7 @@
         @if (User.IsInRole("Client"))
         {
             <td class="text-nowrap">
-                @Html.ActionLink("Detalhes", "Details", new { id = item.StationId })
+                @Html.ActionLink("Reservar desta Estação de Carregamento", "Details", new { id = item.StationId })
             </td>
         }
     </tr>

@@ -156,6 +156,70 @@ namespace TrabPWEB.Controllers
             }
             return View(station);
         }
+        
+        // DO: Reserv
+        public ActionResult ReservThisPost(int? id, int? timeId, int? stationId)
+        {
+            if (id == null || timeId == null || stationId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            StationPost stationPost = db.StationPosts.Find(id);
+            Station station = db.Stations.Find(id);
+            if (stationPost == null)
+            {
+                return HttpNotFound();
+            }
+
+            string userId = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Single().Id;
+
+            decimal saldo = db.MoneyAtribuitions.Where(o => o.UserId.Equals(userId)).Single().Cash;
+
+            if((saldo - stationPost.Price) < 0)
+            {
+                ModelState.AddModelError(string.Empty, "Não tem dinheiro suficiente na sua conta.");
+                return View(station);
+            }
+            else
+            {
+                db.MoneyAtribuitions.Where(o => o.UserId.Equals(userId)).Single().Cash = (saldo - stationPost.Price);
+            }
+
+            TimeAtribuition time = db.TimeAtribuitions.Where(o => o.TimeDataId == timeId).Single();
+            db.TimeAtribuitions.Remove(time);
+
+            TimeData timeData = db.TimeDatas.Where(o => o.Status == false && o.Time.Hour == time.TimeData.Time.Hour).Single();
+            db.TimeAtribuitions.Add(new TimeAtribuition()
+            {
+                TimeData = timeData,
+                TimeDataId = timeData.TimeDataId,
+                StationPost = stationPost,
+                StationPostId = stationPost.StationPostId
+            });
+
+            DateTime reservTime = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                timeData.Time.Hour,
+                timeData.Time.Minute,
+                timeData.Time.Second
+            );
+
+            Reserve reserve = new Reserve()
+            {
+                Date = reservTime,
+                StationPost = stationPost,
+                StationPostId = stationPost.StationPostId,
+                UserId = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Select(o => o.Id).Single(),
+                Completed = 1
+            };
+
+            db.Reserves.Add(reserve);
+
+            db.SaveChanges();
+            return View(station);
+        }
 
         // GET: Stations/Create
         public ActionResult Create()

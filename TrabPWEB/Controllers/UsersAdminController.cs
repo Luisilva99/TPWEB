@@ -149,6 +149,7 @@ namespace TrabPWEB
             {
                 Id = user.Id,
                 Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
                 {
                     Selected = userRoles.Contains(x.Name),
@@ -162,7 +163,7 @@ namespace TrabPWEB
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id,PhoneNumber")] EditUserViewModel editUser, params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
@@ -174,6 +175,7 @@ namespace TrabPWEB
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
+                user.PhoneNumber = editUser.PhoneNumber;
 
                 var userRoles = await UserManager.GetRolesAsync(user.Id);
 

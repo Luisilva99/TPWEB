@@ -628,6 +628,10 @@
     <Compile Include="Migrations\201912141722028_Onehundred-Seven.Designer.cs">
       <DependentUpon>201912141722028_Onehundred-Seven.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912171830026_Onehundred-Eight.cs" />
+    <Compile Include="Migrations\201912171830026_Onehundred-Eight.Designer.cs">
+      <DependentUpon>201912171830026_Onehundred-Eight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1081,6 +1085,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912141722028_Onehundred-Seven.resx">
       <DependentUpon>201912141722028_Onehundred-Seven.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912171830026_Onehundred-Eight.resx">
+      <DependentUpon>201912171830026_Onehundred-Eight.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

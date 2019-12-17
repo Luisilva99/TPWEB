@@ -28,6 +28,12 @@ namespace TrabPWEB
         [EmailAddress]
         public string Email { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Contacto")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{9})$", ErrorMessage = "Não é um número de telemóvel / telefone válido.")]
+        [Required(ErrorMessage = "O número de telemóvel / telefone é obrigatório.")]
+        public string PhoneNumber { get; set; }
+
         public IEnumerable<SelectListItem> RolesList { get; set; }
     }
 

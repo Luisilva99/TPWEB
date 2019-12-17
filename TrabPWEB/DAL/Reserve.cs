@@ -28,6 +28,14 @@ namespace TrabPWEB.DAL
 
 
         [Required]
+        [Display(Name = "Tipo de Tomada")]
+        public int RechargeModId { get; set; }
+
+        [ForeignKey("RechargeModId")]
+        public virtual RechargeMod RechargeMod { get; set; }
+
+
+        [Required]
         [DataType(DataType.Time)]
         [Display(Name = "Data da reserva")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]

@@ -632,6 +632,10 @@
     <Compile Include="Migrations\201912171830026_Onehundred-Eight.Designer.cs">
       <DependentUpon>201912171830026_Onehundred-Eight.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912181034518_Test1.cs" />
+    <Compile Include="Migrations\201912181034518_Test1.Designer.cs">
+      <DependentUpon>201912181034518_Test1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -647,6 +651,7 @@
       <DependentUpon>aspnet-TrabPWEB-20191202101004.mdf</DependentUpon>
     </Content>
     <Content Include="Assets\operational-amplifier.regular.e_recarga.png" />
+    <Content Include="Assets\thunder.ico.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -721,7 +726,6 @@
     <Content Include="Views\InitAdmin\Success.cshtml" />
     <Content Include="Views\InitAdmin\Index.cshtml" />
     <Content Include="Views\InitAdmin\Error.cshtml" />
-    <Content Include="Views\Locals\Create.cshtml" />
     <Content Include="Views\Locals\Delete.cshtml" />
     <Content Include="Views\Locals\Details.cshtml" />
     <Content Include="Views\Locals\Edit.cshtml" />
@@ -752,6 +756,7 @@
     <Content Include="Views\Stations\Edit.cshtml" />
     <Content Include="Views\Stations\Index.cshtml" />
     <Content Include="Views\Stations\AddPost.cshtml" />
+    <Content Include="Views\Locals\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1088,6 +1093,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912171830026_Onehundred-Eight.resx">
       <DependentUpon>201912171830026_Onehundred-Eight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912181034518_Test1.resx">
+      <DependentUpon>201912181034518_Test1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

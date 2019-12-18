@@ -53,17 +53,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "LocalId,LocalName,RegionId")] Local local)
         {
-            var arrayLocal = db.Locals.Select(p => p.LocalName);
-            var existLocal = arrayLocal.Contains(local.LocalName);
+            if (NomeLocalRepetido(local))
+            {
+                ModelState.AddModelError("LocalName", "Este nome já existe nesta região.");
+            }
+
             if (ModelState.IsValid)
             {
-                //Nota: Perguntar ao Stor
-                if (existLocal)
-                {
-                    ModelState.AddModelError("LocalName", "Nome da Localidade já existe.");
-                    ViewBag.RegionId = new SelectList(db.Regions, "RegionId", "RegionName", local.RegionId);
-                    return View(local);
-                }
                 db.Locals.Add(local);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -97,6 +93,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "LocalId,LocalName,RegionId")] Local local)
         {
+            if (NomeLocalRepetido(local))
+            {
+                ModelState.AddModelError("LocalName", "Este nome já existe nesta região.");
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(local).State = EntityState.Modified;
@@ -142,6 +143,20 @@ namespace TrabPWEB.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Validação
+        [NonAction]
+        private bool NomeLocalRepetido(Local l)
+        {
+            foreach(var aux in db.Locals)
+            {
+                if(aux.LocalName.Equals(l.LocalName) && aux.RegionId == l.RegionId)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -14,10 +14,11 @@ namespace TrabPWEB.DAL
         [Key]
         [DatabaseGenerated(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity)]
         public int LocalId { get; set; }
+
         [Required]
         [Display(Name = "Localidade")]
         [StringLength(150, ErrorMessage = "Tamanho máximo de 150 caracteres.")]
-        [Remote("LocalValidation", "Local", AdditionalFields = "LocalName", ErrorMessage = "Remote: O nome da localidade já existe.")]
+        //[Remote("LocalValidation", "Local", AdditionalFields = "LocalName", ErrorMessage = "Remote: O nome da localidade já existe.")]
         public string LocalName { get; set; }
         [Display(Name = "Região")]
         public int RegionId { get; set; }

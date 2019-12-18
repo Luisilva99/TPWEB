@@ -106,5 +106,5 @@
 
 <div>
     Página @(Model.Stations.PageCount < Model.Stations.PageNumber ? 0 : Model.Stations.PageNumber) de @Model.Stations.PageCount
-    @Html.PagedListPager(Model.Stations, pagina => Url.Action("Estações", new { local = @Model.Local, procura = @Model.Procura, pagina }))
+    @Html.PagedListPager(Model.Stations, pagina => Url.Action("Index", new { local = @Model.Local, procura = @Model.Procura, pagina }))
 </div>

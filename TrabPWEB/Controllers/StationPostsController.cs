@@ -58,6 +58,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(StationPost stationPost)
         {
+            if (NomePostoRepetido(stationPost))
+            {
+                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -124,6 +129,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(StationPost stationPost)
         {
+            if (NomePostoRepetido(stationPost))
+            {
+                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -207,6 +217,20 @@ namespace TrabPWEB.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Validação
+        [NonAction]
+        private bool NomePostoRepetido(StationPost s)
+        {
+            foreach (var aux in db.StationPosts)
+            {
+                if (aux.StationPostName.Equals(s.StationPostName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

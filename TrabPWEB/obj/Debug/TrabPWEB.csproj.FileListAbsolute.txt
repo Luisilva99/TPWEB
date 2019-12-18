@@ -739,3 +739,8 @@ C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabP
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredSix.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredSeven.resources
 C:\Users\Utilizador\Desktop\ISEC\TerceiroAno\1Semestre\PWEB\Trabalho\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredEight.resources
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredFive.resources
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredSix.resources
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredSeven.resources
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.OnehundredEight.resources
+C:\Users\jfbug.LAPTOP-M5U88NV6\Documents\Francisco\Universidade\Programação Web\Trabalho Prático\TPWEB\TrabPWEB\obj\Debug\TrabPWEB.Migrations.Test1.resources

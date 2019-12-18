@@ -28,11 +28,6 @@ namespace TrabPWEB.Controllers
                 stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
                 svm.Procura = procura;
             }
-            else
-            {
-                // AJUDA - É preciso que quando se clique no "Pesquisar" quando não tem nada (null) fique na mesma página, ou seja, Home/Index
-                //         Porém o Redirect e assim dão mas depois se quiser ir às Stations pelo URL não dá :/
-            }
 
             int nreg = 5;
             int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
@@ -73,6 +68,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddPost(StationPost stationPost, int? StationId)
         {
+            if (NomePostoRepetido(stationPost))
+            {
+                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -235,6 +235,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Station station, string UserName)
         {
+            if (NomeEstacaoRepetido(station))
+            {
+                ModelState.AddModelError("StationName", "Já existe uma estação com este nome.");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -282,6 +287,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StationId,StationName,LocalId,Start,Finnish")] Station station)
         {
+            if (NomeEstacaoRepetido(station))
+            {
+                ModelState.AddModelError("StationName", "Já existe uma estação com este nome.");
+            }
+
             if (ModelState.IsValid)
             {
 
@@ -368,7 +378,7 @@ namespace TrabPWEB.Controllers
 
             //Eliminação da atribuição do Owner à estação de carregamento
             var user = db.Users.Where(o => o.UserName.Equals(UserName)).Single();
-            StationAtribution sa = db.StationAtributions.Where(o => o.UserId.Equals(user.Id)).Single();
+            StationAtribution sa = db.StationAtributions.Where(o => o.UserId.Equals(user.Id) && station.StationId == o.StationId).Single();
             db.StationAtributions.Remove(sa);
             //-----------------------------------------------------------
 
@@ -410,6 +420,34 @@ namespace TrabPWEB.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Validação
+        [NonAction]
+        private bool NomeEstacaoRepetido(Station s)
+        {
+            foreach (var aux in db.Stations)
+            {
+                if (aux.StationName.Equals(s.StationName) && aux.LocalId == s.LocalId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Validação
+        [NonAction]
+        private bool NomePostoRepetido(StationPost s)
+        {
+            foreach (var aux in db.StationPosts)
+            {
+                if (aux.StationPostName.Equals(s.StationPostName))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

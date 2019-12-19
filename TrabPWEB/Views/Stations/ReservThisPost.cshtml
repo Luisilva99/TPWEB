@@ -1,10 +1,10 @@
 ﻿@model TrabPWEB.DAL.Reserve
 
 @{
-    ViewBag.Title = "ReservThisPost";
+    ViewBag.Title = "Reservar este Posto";
 }
 
-<h2>ReservThisPost</h2>
+<h2>Reservar este Posto</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Reserve</h4>
+        <h4>Reserva</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group hidden">
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.StationPostId, "StationPostId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StationPostId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StationPostId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.StationPostId, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RechargeModId, "RechargeModId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RechargeModId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("RechargeModId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.RechargeModId, "", new { @class = "text-danger" })
@@ -60,14 +60,14 @@
                 <input type="hidden" name="id" value="@ViewBag.PostId" />
                 <input type="hidden" name="timeId" value="@ViewBag.TimeId" />
                 <input type="hidden" name="stationId" value="@ViewBag.StationId" />
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Reservar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar atrás", "Index")
 </div>
 
 @section Scripts {

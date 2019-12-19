@@ -228,6 +228,10 @@ namespace TrabPWEB.Controllers
                 if ((saldo - stationPost.Price) < 0)
                 {
                     ModelState.AddModelError(string.Empty, "Não tem dinheiro suficiente na sua conta.");
+
+                    ViewBag.RechargeModId = new SelectList(db.RechargeMods, "RechargeModId", "RechargeModName", reserve.RechargeModId);
+                    ViewBag.StationPostId = new SelectList(db.StationPosts, "StationPostId", "StationPostName", reserve.StationPostId);
+
                     return View(reserve);
                 }
                 else
@@ -236,9 +240,11 @@ namespace TrabPWEB.Controllers
                 }
 
                 TimeAtribuition time = db.TimeAtribuitions.Where(o => o.TimeDataId == timeId && o.StationPostId == id).Single();
-                db.TimeAtribuitions.Remove(time);
 
                 TimeData timeData = db.TimeDatas.Where(o => o.Status == false && o.Time.Hour == time.TimeData.Time.Hour).Single();
+
+                db.TimeAtribuitions.Remove(time);
+                
                 db.TimeAtribuitions.Add(new TimeAtribuition()
                 {
                     TimeData = timeData,

@@ -127,15 +127,21 @@ namespace TrabPWEB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(StationPost stationPost)
+        public ActionResult Edit([Bind(Include = "StationPostId,StationPostName,RechargeTypeId,Start,Finnish,Price")] StationPost stationPost)
         {
-            if (NomePostoRepetido(stationPost))
-            {
-                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
-            }
 
+            StationPost sst = db.StationPosts.Find(stationPost.StationPostId);
+            
+            
             if (ModelState.IsValid)
             {
+
+                //if (sst.StationPostName.Equals(stationPost.StationPostName))
+                //{
+                //    ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
+                //    ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName", stationPost.RechargeTypeId);
+                //    return View(stationPost);
+                //}
 
                 var times = db.TimeAtribuitions.Where(o => o.StationPostId == stationPost.StationPostId);
 
@@ -175,6 +181,7 @@ namespace TrabPWEB.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName", stationPost.RechargeTypeId);
             return View(stationPost);
         }

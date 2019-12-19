@@ -757,6 +757,7 @@
     <Content Include="Views\Stations\Index.cshtml" />
     <Content Include="Views\Stations\AddPost.cshtml" />
     <Content Include="Views\Locals\Create.cshtml" />
+    <Content Include="Views\Stations\ReservThisPost.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

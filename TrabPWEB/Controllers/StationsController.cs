@@ -21,13 +21,26 @@ namespace TrabPWEB.Controllers
         {
             StationsIndexViewModel svm = new StationsIndexViewModel();
 
+            string userId = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Select(o => o.Id).Single();
+            List<int> sttttttttt = db.StationAtributions.Where(o => o.UserId.Equals(userId)).Select(o => o.StationId).ToList();
+
             var stations = db.Stations.Include(s => s.Local);
 
             if (!String.IsNullOrEmpty(procura))
             {
-                stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
+                //stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
+                if (User.IsInRole("Owner"))
+                {
+                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura)).Where(o => o.StationId.Equals(sttttttttt));
+                }
+                else
+                {
+                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
+                }
+                
                 svm.Procura = procura;
             }
+
 
             int nreg = 5;
             int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.

@@ -11,6 +11,8 @@ using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
 {
+    [Authorize(Roles = "Client")]
+    [Authorize(Roles = "Admin")]
     public class ReservesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

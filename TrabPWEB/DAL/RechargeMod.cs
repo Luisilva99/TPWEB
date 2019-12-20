@@ -15,7 +15,7 @@ namespace TrabPWEB.DAL
 
         [Required]
         [StringLength(30, ErrorMessage = "Descrição do modo de carregamento não pode ultrapassar 30 caracteres.")]
-        [Display(Name = "Modo de Carregamento")]
+        [Display(Name = "Tipo de Tomada")]
         public string RechargeModName { get; set; }
 
         [Display(Name = "Descrição")]

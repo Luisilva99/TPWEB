@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TrabPWEB.DAL.Reserve>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StationPost.StationPostName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RechargeMod.RechargeModName)
+        </th>
+        <th>
+            <b>Nome de User</b>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Completed)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StationPost.StationPostName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RechargeMod.RechargeModName)
+        </td>
+        <td>
+            <p>
+                @(((TrabPWEB.Controllers.ReservesController)this.ViewContext.Controller).getUserName(item.UserId))
+            </p>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @if(item.Completed == 1)
+            {
+                <p>Em reserva</p>
+            }
+            else if(item.Completed == 2)
+            {
+                <p>Completa</p>
+            }
+            else if(item.Completed == 0)
+            {
+                <p>Cancelada</p>
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ReserveId }) |
+            @Html.ActionLink("Detalhes de Reserva", "Details", new { id = item.ReserveId }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.ReserveId })
+        </td>
+    </tr>
+}
+
+</table>

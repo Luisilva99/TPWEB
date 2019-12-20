@@ -16,6 +16,7 @@ namespace TrabPWEB.DAL
 
 
         [Required]
+        [Display(Name = "Id do User")]
         public string UserId { get; set; }
 
 
@@ -36,9 +37,9 @@ namespace TrabPWEB.DAL
 
 
         [Required]
-        [DataType(DataType.Time)]
+        [DataType(DataType.DateTime)]
         [Display(Name = "Data da reserva")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy HH:mm}")]
         public DateTime Date { get; set; }
 
 

@@ -135,14 +135,14 @@ namespace TrabPWEB.Controllers
         public List<StationPost> getPostos(int? id)
         {
             var truePostos = db.StationPostsAtribuition.Where(o => o.StationId == id).Select(l => l.StationPost);
-            return truePostos.ToList();
+            return truePostos.OrderBy(o => o.StationPostName).ToList();
         }
 
 
         public List<TimeData> getStationTimes(int? id)
         {
             var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);
-            return ttt.ToList();
+            return ttt.OrderBy(o => o.Time.Hour).ToList();
         }
 
         // GET: Stations/Details/5
@@ -212,8 +212,10 @@ namespace TrabPWEB.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             StationPost stationPost = db.StationPosts.Find(id);
             Station station = db.Stations.Find(stationId);
+
             if (stationPost == null)
             {
                 return HttpNotFound();
@@ -244,14 +246,16 @@ namespace TrabPWEB.Controllers
                 TimeData timeData = db.TimeDatas.Where(o => o.Status == false && o.Time.Hour == time.TimeData.Time.Hour).Single();
 
                 db.TimeAtribuitions.Remove(time);
-                
-                db.TimeAtribuitions.Add(new TimeAtribuition()
+
+                TimeAtribuition ta = new TimeAtribuition()
                 {
                     TimeData = timeData,
                     TimeDataId = timeData.TimeDataId,
                     StationPost = stationPost,
                     StationPostId = stationPost.StationPostId
-                });
+                };
+
+                db.TimeAtribuitions.Add(ta);
 
                 db.Reserves.Add(reserve);
 

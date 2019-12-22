@@ -6,24 +6,27 @@
 
 <h2>Index</h2>
 
-<table class="table">
+<table class="table table-hover table-striped w-auto text-center">
     <tr>
-        <th>
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.StationPost.StationPostName)
         </th>
-        <th>
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.RechargeMod.RechargeModName)
         </th>
-        <th>
+        <th class="text-center text-nowrap">
             <b>Nome de User</b>
         </th>
-        <th>
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Date)
         </th>
-        <th>
+        <th class="text-center text-nowrap">
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="text-center text-nowrap">
             @Html.DisplayNameFor(model => model.Completed)
         </th>
-        <th></th>
+        <th class="text-center text-nowrap"></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -43,24 +46,36 @@
             @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @if(item.Completed == 1)
+            @Html.DisplayFor(modelItem => item.Price) €
+        </td>
+        <td>
+            @if (item.Completed == 1)
             {
                 <p>Em reserva</p>
             }
-            else if(item.Completed == 2)
+            else if (item.Completed == 2)
             {
                 <p>Completa</p>
             }
-            else if(item.Completed == 0)
+            else if (item.Completed == 0)
             {
                 <p>Cancelada</p>
             }
         </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ReserveId }) |
-            @Html.ActionLink("Detalhes de Reserva", "Details", new { id = item.ReserveId }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.ReserveId })
-        </td>
+        @if (item.Completed != 0)
+        {
+            <td class="text-nowrap">
+                @Html.ActionLink("Editar", "Edit", new { id = item.ReserveId }) |
+                @Html.ActionLink("Detalhes de Reserva", "Details", new { id = item.ReserveId }) |
+                @Html.ActionLink("Cancelar", "Delete", new { id = item.ReserveId })
+            </td>
+        }
+        else
+        {
+            <td>
+                @Html.ActionLink("Detalhes de Reserva", "Details", new { id = item.ReserveId })
+            </td>
+        }
     </tr>
 }
 

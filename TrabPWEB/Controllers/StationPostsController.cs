@@ -18,6 +18,41 @@ namespace TrabPWEB.Controllers
         // GET: StationPosts
         public ActionResult Index()
         {
+
+            foreach (var item in db.Reserves)
+            {
+
+                DateTime date = item.Date;
+
+                if (date.AddHours(1.0) < DateTime.Now && item.Completed == 1)
+                {
+                    //Completação da reserva
+                    item.Completed = 2;
+                    //-----------------------
+
+                    //Reatribuição do horário livre ao Posto de Carregamento
+                    TimeAtribuition time = db.TimeAtribuitions.Where(o => o.TimeData.Time.Hour == item.Date.Hour && o.StationPostId == item.StationPostId).Single();
+
+                    TimeData timeData = db.TimeDatas.Where(o => o.Status == true && o.Time.Hour == time.TimeData.Time.Hour).Single();
+
+                    db.TimeAtribuitions.Remove(time);
+
+                    TimeAtribuition ta = new TimeAtribuition()
+                    {
+                        TimeData = timeData,
+                        TimeDataId = timeData.TimeDataId,
+                        StationPost = item.StationPost,
+                        StationPostId = item.StationPost.StationPostId
+                    };
+
+                    db.TimeAtribuitions.Add(ta);
+                    //------------------------------------------------------
+
+                }
+            }
+
+            db.SaveChanges();
+
             var stationPosts = db.StationPosts.Include(s => s.RechargeType).OrderBy(o => o.StationPostId);
             return View(stationPosts.ToList());
         }

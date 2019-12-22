@@ -6,9 +6,10 @@
 
 <h2>Eliminar</h2>
 
-<h3>Tem a certeza que quer eliminar esta reserva?</h3>
+<h3>Tem a certeza que quer cancelar esta reserva?</h3>
 <div>
     <h4>
+        <b>Noma do Posto de Carregamento: </b>
         @Html.DisplayFor(model => model.StationPost.StationPostName)
     </h4>
     <hr />
@@ -22,11 +23,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.UserId)
+            <b>Nome de User</b>
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.UserId)
+            <p>
+                @(((TrabPWEB.Controllers.ReservesController)this.ViewContext.Controller).getUserName(Model.UserId))
+            </p>
         </dd>
 
         <dt>
@@ -35,6 +38,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price) €
         </dd>
 
         <dt>
@@ -62,7 +73,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Cancelar" class="btn btn-danger" /> |
             @Html.ActionLink("Voltar para a lista de Reservas", "Index")
         </div>
     }

@@ -45,10 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Chart.Mvc, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Chart.Mvc.1.0.0.2\lib\net45\Chart.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -58,6 +58,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -107,9 +108,6 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -188,6 +186,7 @@
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\StationPostsController.cs" />
     <Compile Include="Controllers\StationsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TimeDatasController.cs" />
     <Compile Include="Controllers\UsersAdminController.cs" />
     <Compile Include="DAL\Local.cs" />
@@ -200,6 +199,8 @@
     <Compile Include="DAL\StationAtribution.cs" />
     <Compile Include="DAL\StationPost.cs" />
     <Compile Include="DAL\StationPostsAtribuition.cs" />
+    <Compile Include="DAL\StatisticMoney.cs" />
+    <Compile Include="DAL\StatisticTime.cs" />
     <Compile Include="DAL\TimeAtribuition.cs" />
     <Compile Include="DAL\TimeData.cs" />
     <Compile Include="Global.asax.cs">
@@ -641,6 +642,10 @@
     <Compile Include="Migrations\201912192328271_Onehundred-Ten.Designer.cs">
       <DependentUpon>201912192328271_Onehundred-Ten.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912211436137_Onehundred-Eleven.cs" />
+    <Compile Include="Migrations\201912211436137_Onehundred-Eleven.Designer.cs">
+      <DependentUpon>201912211436137_Onehundred-Eleven.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -767,6 +772,7 @@
     <Content Include="Views\Reserves\Details.cshtml" />
     <Content Include="Views\Reserves\Edit.cshtml" />
     <Content Include="Views\Reserves\Index.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -1109,6 +1115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912192328271_Onehundred-Ten.resx">
       <DependentUpon>201912192328271_Onehundred-Ten.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912211436137_Onehundred-Eleven.resx">
+      <DependentUpon>201912211436137_Onehundred-Eleven.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

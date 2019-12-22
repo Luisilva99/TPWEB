@@ -19,33 +19,77 @@ namespace TrabPWEB.Controllers
         // GET: Stations
         public ActionResult Index(string local, string procura, int? pagina)
         {
-            StationsIndexViewModel svm = new StationsIndexViewModel();
 
-            string userId = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Select(o => o.Id).Single();
-            List<int> sttttttttt = db.StationAtributions.Where(o => o.UserId.Equals(userId)).Select(o => o.StationId).ToList();
-
-            var stations = db.Stations.Include(s => s.Local);
-
-            if (!String.IsNullOrEmpty(procura))
+            foreach (var item in db.Reserves)
             {
-                //stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
-                if (User.IsInRole("Owner"))
+
+                DateTime date = item.Date;
+
+                if (date.AddHours(1.0) < DateTime.Now && item.Completed == 1)
                 {
-                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura)).Where(o => o.StationId.Equals(sttttttttt));
+                    //Completação da reserva
+                    item.Completed = 2;
+                    //-----------------------
+
+                    //Reatribuição do horário livre ao Posto de Carregamento
+                    TimeAtribuition time = db.TimeAtribuitions.Where(o => o.TimeData.Time.Hour == item.Date.Hour && o.StationPostId == item.StationPostId).Single();
+
+                    TimeData timeData = db.TimeDatas.Where(o => o.Status == true && o.Time.Hour == time.TimeData.Time.Hour).Single();
+
+                    db.TimeAtribuitions.Remove(time);
+
+                    TimeAtribuition ta = new TimeAtribuition()
+                    {
+                        TimeData = timeData,
+                        TimeDataId = timeData.TimeDataId,
+                        StationPost = item.StationPost,
+                        StationPostId = item.StationPost.StationPostId
+                    };
+
+                    db.TimeAtribuitions.Add(ta);
+                    //------------------------------------------------------
+
                 }
-                else
-                {
-                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
-                }
-                
-                svm.Procura = procura;
             }
 
+            db.SaveChanges();
 
-            int nreg = 5;
-            int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
+            StationsIndexViewModel svm = new StationsIndexViewModel();
+            
+            if (User.IsInRole("Owner"))
+            {
+                string userId = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Select(o => o.Id).Single();
 
-            svm.OrdenarEstacoes(stations, pag, nreg);
+                var stations = db.StationAtributions.Where(o => o.UserId.Equals(userId)).Select(o => o.Station).Include(s => s.Local);
+
+                if (!String.IsNullOrEmpty(procura))
+                {
+                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
+
+                    svm.Procura = procura;
+                }
+
+                int nreg = 5;
+                int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
+
+                svm.OrdenarEstacoes(stations, pag, nreg);
+            }
+            else
+            {
+                var stations = db.StationAtributions.Select(o => o.Station).Include(s => s.Local);
+
+                if (!String.IsNullOrEmpty(procura))
+                {
+                    stations = stations.Where(s => s.Local.LocalName.Contains(procura) || s.StationName.Contains(procura));
+
+                    svm.Procura = procura;
+                }
+
+                int nreg = 5;
+                int pag = (pagina ?? 1); //Se pagina for um valor não nulo pag= pagina; senão pag= 1.
+
+                svm.OrdenarEstacoes(stations, pag, nreg);
+            }
 
             return View(svm);
         }
@@ -209,7 +253,9 @@ namespace TrabPWEB.Controllers
                 Date = reservTime,
                 Completed = 1,
                 StationPost = stationPost,
-                UserId = userId
+                StationPostId = stationPost.StationPostId,
+                UserId = userId,
+                Price = stationPost.Price
             };
             return View(reserve);
         }
@@ -219,7 +265,7 @@ namespace TrabPWEB.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ReservThisPost([Bind(Include = "ReserveId,UserId,StationPostId,RechargeModId,Date,Completed")] Reserve reserve, int? id, int? timeId, int? stationId)
+        public ActionResult ReservThisPost([Bind(Include = "ReserveId,UserId,StationPostId,RechargeModId,Date,Price,Completed")] Reserve reserve, int? id, int? timeId, int? stationId)
         {
             if (id == null || timeId == null || stationId == null)
             {
@@ -269,6 +315,10 @@ namespace TrabPWEB.Controllers
                 };
 
                 db.TimeAtribuitions.Add(ta);
+
+                //necessário porque por alguma razão desconhecida ele não consegue passar esta informação
+                reserve.StationPostId = (int) id;
+                //---------------------------------------------------------------------------------------
 
                 db.Reserves.Add(reserve);
 

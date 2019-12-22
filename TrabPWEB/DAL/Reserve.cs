@@ -42,10 +42,11 @@ namespace TrabPWEB.DAL
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy HH:mm}")]
         public DateTime Date { get; set; }
 
+
         [Required]
         [DataType(DataType.Currency)]
         [Display(Name = "Preço da reserva")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#######.##}")]
+        [DisplayFormat(DataFormatString = "{0:#######.##}", ApplyFormatInEditMode = true)]
         public decimal Price { get; set; }
 
 

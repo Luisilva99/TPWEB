@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<div id="chartContainerTime" style="width: 45%; height: 300px;display: inline-block;"></div>
+<div id="chartContainerMoney" style="width: 45%; height: 300px;display: inline-block;"></div>
+
+
+
+<script type="text/javascript">
+
+    var chart2 = new CanvasJS.Chart("chartContainerTime", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            text: "Histórico de reservas"
+        },
+        data: [
+            {
+                type: "doughnut", //change type to bar, line, area, pie, etc
+                dataPoints: @Html.Raw(ViewBag.DataTimeReservePoints),
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}",
+                legendText: "{label}",
+                indexLabel: "{label} - {y} ",
+                showInLegend: "true",
+                indexLabelFontSize: 10
+            }
+        ]
+    });
+
+    chart2.render();
+
+    var chart = new CanvasJS.Chart("chartContainerMoney", {
+        theme: "light2",
+        animationEnabled: true,
+        title: {
+            text: "Histórico de Transações"
+        },
+        data: [
+            {
+                type: "bar", //change type to bar, line, area, pie, etc
+                dataPoints: @Html.Raw(ViewBag.DataMoneyPoints),
+                toolTipContent: "<b>{label}</b>: {y} €",
+                legendText: "{label}",
+                showInLegend: "true",
+                indexLabelFontSize: 5
+            }
+        ]
+    });
+
+    chart.render();
+</script>
+
+@if (User.IsInRole("Admin"))
+{
+    for (int i = 0; i < ViewBag.AllOwnerSize; i++)
+    {
+        <div id="@ViewBag.AllOwnersNames[i] + @i" style="width: 45%; height: 300px;display: inline-block;"></div>
+
+        <script>
+            var chart2 = new CanvasJS.Chart("@ViewBag.AllOwnersNames[i] + @i", {
+                theme: "light2",
+                animationEnabled: true,
+                title: {
+                    text: "Histórico de reservas do User: @ViewBag.AllOwnersNames[i]"
+                },
+                data: [
+                    {
+                    type: "doughnut", //change type to bar, line, area, pie, etc
+                        dataPoints: @Html.Raw(((TrabPWEB.Controllers.StatisticsController)this.ViewContext.Controller).getTimeUser(ViewBag.AllOwnersNames[i])),
+                        startAngle: 25,
+                        toolTipContent: "<b>{label}</b>: {y}",
+                        legendText: "{label}",
+                        indexLabel: "{label} - {y} ",
+                        showInLegend: "true",
+                        indexLabelFontSize: 10
+                    }
+                ]
+            });
+
+                chart2.render();
+        </script>
+
+        <div id="@ViewBag.AllOwnersNames[i] + @(i+9999)" style="width: 45%; height: 300px;display: inline-block;"></div>
+
+        <script>
+            var chart = new CanvasJS.Chart("@ViewBag.AllOwnersNames[i] + @(i+9999)", {
+                theme: "light2",
+                animationEnabled: true,
+                title: {
+                    text: "Transações do User: @ViewBag.AllOwnersNames[i]"
+                },
+                data: [
+                    {
+                        type: "bar", //change type to bar, line, area, pie, etc
+                        dataPoints: @Html.Raw(((TrabPWEB.Controllers.StatisticsController)this.ViewContext.Controller).getMoneyUser(ViewBag.AllOwnersNames[i])),
+                        toolTipContent: "<b>{label}</b>: {y} €",
+                        legendText: "{label}",
+                        showInLegend: "true",
+                        indexLabelFontSize: 5
+                    }
+                ]
+            });
+
+        chart.render();
+        </script>
+    }
+}
+

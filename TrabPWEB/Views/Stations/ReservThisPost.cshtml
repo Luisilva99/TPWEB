@@ -23,7 +23,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group hidden">
             @Html.LabelFor(model => model.StationPostId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StationPostId", null, htmlAttributes: new { @class = "form-control" })
@@ -42,8 +42,16 @@
         <div class="form-group hidden">
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Date, "{0:HH:mm}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control", @Value = Model.Date.ToString("s") } })
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, "{0:#######.##}", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -28,6 +28,24 @@
                         <li style="text-size-adjust:auto">
                             @Html.ActionLink("Utilizadores", "Index", "UsersAdmin", new { area = "" }, new { @class = "" })
                         </li>
+                        <li style="text-size-adjust:auto">
+                                @Html.ActionLink("Locais", "Index", "Locals", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Estatísticas", "Index", "Statistics", new { area = "" }, new { @class = "" })
+                        </li>
+                    }
+                    @if (User.IsInRole("Owner"))
+                    {
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Estatísticas", "Index", "Statistics", new { area = "" }, new { @class = "" })
+                        </li>
+                    }
+                    @if (User.IsInRole("Client"))
+                    {
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Reservas", "Index", "Reserves", new { area = "" }, new { @class = "" })
+                        </li>
                     }
                     <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
                     <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>

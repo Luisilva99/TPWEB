@@ -1,28 +1,28 @@
 ﻿@model TrabPWEB.Models.IndexViewModel
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Perfil";
 }
 
 <h2>@ViewBag.Title.</h2>
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <h4>Mudar as definições da sua conta</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Phone Number:
+            Número de Telemóvel:
         </dt>
         <dd>
             @Model.PhoneNumber
             [
             @if ((Model.PhoneNumber).IsEmpty())
             {
-                @Html.ActionLink("Add phone number", "AddPhoneNumber")
+                @Html.ActionLink("Add número de telemóvel", "AddPhoneNumber")
             }
             else
             {
-                @Html.ActionLink("Verify phone number", "VerifyPhoneNumber")
+                @Html.ActionLink("Verificar número de telemóvel", "VerifyPhoneNumber")
             }
             ]
         </dd>
@@ -31,18 +31,18 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Change your password", "ChangePassword")
+                @Html.ActionLink("Alterar password", "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("Create", "SetPassword")
+                @Html.ActionLink("Criar", "SetPassword")
             }
             ]
         </dd>
-        <dt>External Logins:</dt>
+        <dt>Logins externos:</dt>
         <dd>
             @Model.Logins.Count [
-            @Html.ActionLink("Manage", "ManageLogins") ]
+            @Html.ActionLink("Modificar", "ManageLogins") ]
         </dd>
         @*
         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
@@ -75,8 +75,9 @@
         <dt>Two-Factor Authentication:</dt>
         <dd>
             <p>
-                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                for details on setting up this ASP.NET application to support two-factor authentication.
+                Não existe Two-Factor Autentication.
+                @*There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication.*@
             </p>
             @*@if (Model.TwoFactor)
             {

@@ -18,21 +18,39 @@
     {
         if (User.IsInRole("Admin"))
         {
-            <div class="col-md-4">
-                <h2 style="text-size-adjust:auto">Lista de Utilizadores</h2>
+            <div class="col-md-3">
+                <h2 style="text-size-adjust:auto">Lista de Users</h2>
                 <p style="text-align:justify; text-size-adjust:auto">Pode visualizar os utilizadores atualmente registados.</p>
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2 style="text-size-adjust:auto">Estaísticas Totais</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode visualizar todas as estatísticas do site.</p>
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Statistics")"> Estatísticas &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2 style="text-size-adjust:auto">Adicionar Local</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode adicionar uma localidade para os Owners adicionarem as suas estações.</p>
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Locals")"> Locais &raquo;</a></p>
             </div>
         }
         if (User.IsInRole("Client"))
         {
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h2 style="text-size-adjust:auto">Fazer Reserva</h2>
                 <p style="text-align:justify; text-size-adjust:auto">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Reservar &raquo;</a></p>
             </div>
         }
-        <div class="col-md-4">
+        if (User.IsInRole("Owner"))
+        {
+            <div class="col-md-4">
+                <h2 style="text-size-adjust:auto">Estaísticas da Empresa</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode visualizar as estatísticas referentes à sua empresa.</p> <br />
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Statistics")"> Estatísticas &raquo;</a></p>
+            </div>
+        }
+        <div class="col-md-3">
             <h2 style="text-size-adjust:auto">Fazer Pesquisa</h2>
             <p style="text-align:justify; text-size-adjust:auto">Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
             <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Pesquisa &raquo;</a></p>

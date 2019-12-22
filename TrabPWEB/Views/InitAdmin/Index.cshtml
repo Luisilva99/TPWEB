@@ -1,13 +1,13 @@
 ﻿@{
-    ViewBag.Title = "Init Admin";
+    ViewBag.Title = "Inicia Admin";
 }
 
-<h2>Init Identity</h2>
+<h2>Inicia Identidade</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <h4>Enter the credentials you wish to be used to create a new Admin user.</h4>
+    <h4>Adicione as suas credencias para ser adicionado como um Admin.</h4>
     <hr />
     <div class="form-group">
         <label class = "col-md-2 control-label">Admin Email</label>
@@ -23,7 +23,7 @@
     </div><br /><br />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-info" value="Initialize Identity" />
+            <input type="submit" class="btn btn-info" value="Inicializar" />
         </div>
     </div>
 }

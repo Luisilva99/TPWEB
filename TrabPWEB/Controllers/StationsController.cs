@@ -552,7 +552,7 @@ namespace TrabPWEB.Controllers
         {
             foreach (var aux in db.StationPosts)
             {
-                if (aux.StationPostName.Equals(s.StationPostName))
+                if (aux.StationPostName.Equals(s.StationPostName)) // Verificar a estação!
                 {
                     return true;
                 }

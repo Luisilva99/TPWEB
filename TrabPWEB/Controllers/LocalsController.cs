@@ -100,7 +100,10 @@ namespace TrabPWEB.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Entry(local).State = EntityState.Modified;
+                db.Locals.Where(o => o.LocalId == local.LocalId).Single().LocalName = local.LocalName;
+                db.Locals.Where(o => o.LocalId == local.LocalId).Single().Region = local.Region;
+                db.Locals.Where(o => o.LocalId == local.LocalId).Single().RegionId = local.RegionId;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

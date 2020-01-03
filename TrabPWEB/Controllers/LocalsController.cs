@@ -11,11 +11,13 @@ using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
 {
+    [Authorize]
     public class LocalsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Locals
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var locals = db.Locals.Include(l => l.Region).OrderBy(k => k.Region.RegionName).ThenBy(l => l.LocalName);
@@ -115,6 +117,11 @@ namespace TrabPWEB.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
+            if (db.Stations.Any(p => p.LocalId.Equals(id)))
+            {
+                return RedirectToAction("Index");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

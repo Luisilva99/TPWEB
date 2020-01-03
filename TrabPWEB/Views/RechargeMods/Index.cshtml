@@ -28,11 +28,21 @@
         <td style="text-align:justify">
             @Html.DisplayFor(modelItem => item.RechargeModDescription)
         </td>
-        <td class="text-nowrap" style="min-width:100px">
-            @Html.ActionLink("Editar", "Edit", new { id=item.RechargeModId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.RechargeModId }) |
-            @Html.ActionLink("Apagar", "Delete", new { id=item.RechargeModId })
-        </td>
+        @if (User.IsInRole("Owner"))
+        {
+            <td class="text-nowrap" style="min-width:100px">
+                @Html.ActionLink("Editar", "Edit", new { id = item.RechargeModId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.RechargeModId })
+            </td>
+        }
+        else
+        {
+            <td class="text-nowrap" style="min-width:100px">
+                @Html.ActionLink("Editar", "Edit", new { id = item.RechargeModId }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.RechargeModId }) |
+                @Html.ActionLink("Apagar", "Delete", new { id = item.RechargeModId })
+            </td>
+        }
     </tr>
 }
 

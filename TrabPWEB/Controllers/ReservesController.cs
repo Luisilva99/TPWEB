@@ -76,6 +76,13 @@ namespace TrabPWEB.Controllers
         // GET: Reserves/Details/5
         public ActionResult Details(int? id)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -91,6 +98,13 @@ namespace TrabPWEB.Controllers
         // GET: Reserves/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -126,6 +140,13 @@ namespace TrabPWEB.Controllers
         // GET: Reserves/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

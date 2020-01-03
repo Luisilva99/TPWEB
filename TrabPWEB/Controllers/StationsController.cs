@@ -95,8 +95,15 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: StationPosts/AddPost
+        [Authorize(Roles = "Admin,Roles")]
         public ActionResult AddPost(int? id)
         {
+            if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
 
             if (id == null || id < 0)
             {
@@ -125,9 +132,16 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AddPost(StationPost stationPost, int? StationId)
         {
+            if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (NomePostoRepetido(stationPost))
             {
-                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
+                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta ou noutra estação.");
                 AddPost(StationId);
             }
             else
@@ -218,8 +232,16 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: Reserves/Create
+        [Authorize(Roles = "Client")]
         public ActionResult ReservThisPost(int? id, int? timeId, int? stationId)
         {
+            if (!User.IsInRole("Client"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             ViewBag.RechargeModId = new SelectList(db.RechargeMods, "RechargeModId", "RechargeModName");
             ViewBag.StationPostId = new SelectList(db.StationPosts, "StationPostId", "StationPostName");
 
@@ -267,6 +289,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ReservThisPost([Bind(Include = "ReserveId,UserId,StationPostId,RechargeModId,Date,Price,Completed")] Reserve reserve, int? id, int? timeId, int? stationId)
         {
+            if (!User.IsInRole("Client"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null || timeId == null || stationId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -332,8 +361,16 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: Stations/Create
+        [Authorize(Roles = "Owner")]
         public ActionResult Create()
         {
+            if (!User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             ViewBag.LocalId = new SelectList(db.Locals, "LocalId", "LocalName");
             return View();
         }
@@ -345,6 +382,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Station station, string UserName)
         {
+            if (!User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (NomeEstacaoRepetido(station))
             {
                 ModelState.AddModelError("StationName", "Já existe uma estação com este nome.");
@@ -377,6 +421,13 @@ namespace TrabPWEB.Controllers
         [Authorize(Roles = "Admin,Owner")]
         public ActionResult Edit(int? id)
         {
+            if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -397,6 +448,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StationId,StationName,LocalId,Start,Finnish")] Station station)
         {
+            if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (NomeEstacaoRepetido(station))
             {
                 ModelState.AddModelError("StationName", "Já existe uma estação com este nome.");
@@ -460,8 +518,16 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: Stations/Delete/5
+        [Authorize(Roles = "Owner")]
         public ActionResult Delete(int? id)
         {
+            if (!User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -479,6 +545,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, string UserName)
         {
+            if (!User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (UserName == null || UserName.Length == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

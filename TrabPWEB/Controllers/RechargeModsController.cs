@@ -101,6 +101,11 @@ namespace TrabPWEB.Controllers
                 //--------------------------------------------------------------------
             }
 
+            if (db.Reserves.Where(p => p.RechargeModId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -118,6 +123,18 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
+            if (db.Reserves.Where(p => p.RechargeModId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+
             RechargeMod rechargeMod = db.RechargeMods.Find(id);
             db.RechargeMods.Remove(rechargeMod);
             db.SaveChanges();

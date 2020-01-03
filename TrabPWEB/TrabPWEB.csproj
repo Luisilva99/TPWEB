@@ -755,7 +755,6 @@
     <Content Include="Views\TimeDatas\Details.cshtml" />
     <Content Include="Views\TimeDatas\Edit.cshtml" />
     <Content Include="Views\TimeDatas\Index.cshtml" />
-    <Content Include="Views\StationPosts\Create.cshtml" />
     <Content Include="Views\StationPosts\Delete.cshtml" />
     <Content Include="Views\StationPosts\Details.cshtml" />
     <Content Include="Views\StationPosts\Edit.cshtml" />

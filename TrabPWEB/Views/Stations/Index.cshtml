@@ -84,20 +84,31 @@
                 </table>
             </div>
         </td>
-        @if (User.IsInRole("Owner") || User.IsInRole("Admin"))
+        @if (User.Identity.IsAuthenticated)
         {
-            <td class="text-nowrap">
-                @Html.ActionLink("Adicionar Novo Posto", "AddPost", new { id = item.StationId }) |
-                @Html.ActionLink("Editar", "Edit", new { id = item.StationId }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.StationId }) |
-                @Html.ActionLink("Apagar", "Delete", new { id = item.StationId })
-            </td>
-        }
-        @if (User.IsInRole("Client"))
-        {
-            <td class="text-nowrap">
-                @Html.ActionLink("Reservar desta Estação de Carregamento", "Details", new { id = item.StationId })
-            </td>
+            if (User.IsInRole("Admin"))
+            {
+                <td class="text-nowrap">
+                    @Html.ActionLink("Adicionar Novo Posto", "AddPost", new { id = item.StationId }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.StationId }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.StationId })
+                </td>
+            }
+            else if (User.IsInRole("Owner"))
+            {
+                <td class="text-nowrap">
+                    @Html.ActionLink("Adicionar Novo Posto", "AddPost", new { id = item.StationId }) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.StationId }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.StationId }) |
+                    @Html.ActionLink("Apagar", "Delete", new { id = item.StationId })
+                </td>
+            }
+            else if (User.IsInRole("Client"))
+            {
+                <td class="text-nowrap">
+                    @Html.ActionLink("Reservar desta Estação de Carregamento", "Details", new { id = item.StationId })
+                </td>
+            }
         }
     </tr>
     }

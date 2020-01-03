@@ -108,7 +108,7 @@
                                 </td>
                                 @if (User.IsInRole("Client"))
                                 {
-                                    if (itemTime.Status)
+                                    if (itemTime.Status && (itemTime.Time.Hour + 1) < DateTime.Now.Hour)
                                     {
                                         <td>
                                             @Html.ActionLink("Reservar", "ReservThisPost", new { id = itemPosto.StationPostId, timeId = itemTime.TimeDataId, stationId = Model.StationId })

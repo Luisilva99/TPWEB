@@ -11,6 +11,7 @@ using TrabPWEB.Models;
 
 namespace TrabPWEB.Controllers
 {
+    [Authorize(Roles = "Admin,Owner")]
     public class StationPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -79,69 +80,8 @@ namespace TrabPWEB.Controllers
             return View(stationPost);
         }
 
-        // GET: StationPosts/Create
-        public ActionResult Create()
-        {
-            ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName");
-            return View();
-        }
-
-        // POST: StationPosts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(StationPost stationPost)
-        {
-            if (NomePostoRepetido(stationPost))
-            {
-                ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
-            }
-
-            if (ModelState.IsValid)
-            {
-
-                db.StationPosts.Add(stationPost);
-
-                for (int i = 0; i < db.TimeDatas.Count() / 2; i++)
-                {
-                    if (i < stationPost.Start.Hour || i > stationPost.Finnish.Hour)
-                    {
-                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == false).Single();
-                        TimeAtribuition ta = new TimeAtribuition()
-                        {
-                            StationPostId = stationPost.StationPostId,
-                            StationPost = stationPost,
-                            TimeData = trueTimes,
-                            TimeDataId = trueTimes.TimeDataId
-                        };
-
-                        db.TimeAtribuitions.Add(ta);
-                    }
-                    else
-                    {
-                        var trueTimes = db.TimeDatas.Where(o => o.Time.Hour == i).Where(k => k.Status == true).Single();
-                        TimeAtribuition ta = new TimeAtribuition()
-                        {
-                            StationPostId = stationPost.StationPostId,
-                            StationPost = stationPost,
-                            TimeData = trueTimes,
-                            TimeDataId = trueTimes.TimeDataId
-                        };
-
-                        db.TimeAtribuitions.Add(ta);
-                    }
-                }
-
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName", stationPost.RechargeTypeId);
-            return View(stationPost);
-        }
-
         // GET: StationPosts/Edit/5
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -170,13 +110,6 @@ namespace TrabPWEB.Controllers
             
             if (ModelState.IsValid)
             {
-
-                //if (sst.StationPostName.Equals(stationPost.StationPostName))
-                //{
-                //    ModelState.AddModelError("StationPostName", "Já existe um posto com este nome nesta estação.");
-                //    ViewBag.RechargeTypeId = new SelectList(db.RechargeTypes, "RechargeTypeId", "RechargeTypeName", stationPost.RechargeTypeId);
-                //    return View(stationPost);
-                //}
 
                 var times = db.TimeAtribuitions.Where(o => o.StationPostId == stationPost.StationPostId);
 
@@ -222,8 +155,10 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: StationPosts/Delete/5
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult Delete(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -241,6 +176,21 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
+            if (db.Reserves.Where(p => p.StationPostId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+            
+            StationPostsAtribuition ppp = db.StationPostsAtribuition.Where(p => p.StationPostId == id).Single();
+
+            db.StationPostsAtribuition.Remove(ppp);
 
             var times = db.TimeAtribuitions.Where(o => o.StationPostId == id);
 

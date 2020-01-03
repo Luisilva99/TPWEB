@@ -126,6 +126,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReserveId,UserId,StationPostId,RechargeModId,Date,Price,Completed")] Reserve reserve)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(reserve).State = EntityState.Modified;
@@ -164,6 +171,13 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (User.IsInRole("Owner"))
+            {
+                //Impedimento de o owner ver as reservas dos clientes da base de dados
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden, "You don't have authorization to go to webpage.");
+                //--------------------------------------------------------------------
+            }
+
             //Dados Auxilixares
             Reserve reserve = db.Reserves.Find(id);
             int stationId = db.StationPostsAtribuition.Where(o => o.StationPostId == reserve.StationPostId).Select(o => o.StationId).Single();

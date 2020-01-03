@@ -94,6 +94,11 @@ namespace TrabPWEB.Controllers
         // GET: RechargeTypes/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (db.StationPosts.Where(p => p.RechargeTypeId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -111,6 +116,11 @@ namespace TrabPWEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (db.StationPosts.Where(p => p.RechargeTypeId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+
             RechargeType rechargeType = db.RechargeTypes.Find(id);
             db.RechargeTypes.Remove(rechargeType);
             db.SaveChanges();

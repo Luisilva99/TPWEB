@@ -23,7 +23,7 @@
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "UsersAdmin")"> Utilizadores &raquo;</a></p>
             </div>
             <div class="col-md-3">
-                <h2 style="text-size-adjust:auto">Estaísticas Totais</h2>
+                <h2 style="text-size-adjust:auto">Estatísticas Totais</h2>
                 <p style="text-align:justify; text-size-adjust:auto">Pode visualizar todas as estatísticas do site.</p>
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Statistics")"> Estatísticas &raquo;</a></p>
             </div>
@@ -37,22 +37,30 @@
         {
             <div class="col-md-3">
                 <h2 style="text-size-adjust:auto">Fazer Reserva</h2>
-                <p style="text-align:justify; text-size-adjust:auto">Pode reservar um posto escolhendo a sua localização, horário e tomada.</p>
+                <p style="text-align:justify; text-size-adjust:auto">Pode reservar um posto escolhendo a sua localização, horário e tomada. E também pode pesquisar sobre locais e postos.</p>
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Reservar &raquo;</a></p>
             </div>
         }
         if (User.IsInRole("Owner"))
         {
+            <div class="col-md-3">
+                <h2 style="text-size-adjust:auto">Estações de Carregamento</h2>
+                <p style="text-align:justify; text-size-adjust:auto">Pode visualizar as suas Estações de Carregamento e os seus respetivos Postos de Carregamento. Assim como modificar os seus horários de funcionamento.</p>
+                <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Estações &raquo;</a></p>
+            </div>
             <div class="col-md-4">
-                <h2 style="text-size-adjust:auto">Estaísticas da Empresa</h2>
+                <h2 style="text-size-adjust:auto">Estatísticas da Empresa</h2>
                 <p style="text-align:justify; text-size-adjust:auto">Pode visualizar as estatísticas referentes à sua empresa.</p> <br />
                 <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Statistics")"> Estatísticas &raquo;</a></p>
             </div>
         }
+    }
+    else
+    {
         <div class="col-md-3">
-            <h2 style="text-size-adjust:auto">Fazer Pesquisa</h2>
-            <p style="text-align:justify; text-size-adjust:auto">Pode pesquisar sobre locais, postos, tomadas para carregamento.</p>
-            <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Pesquisa &raquo;</a></p>
+            <h2 style="text-size-adjust:auto">Visualizar Estações de Carregamento e os seus Posto</h2>
+            <p style="text-align:justify; text-size-adjust:auto">Pode visualizar as possiveis reservas a um posto escolhendo a sua localização, horário e tomada. E também pode pesquisar sobre locais e estações de carregamento.</p>
+            <p style="text-size-adjust:auto"><a class="btn btn-default" href="@Url.Action("Index", "Stations")"> Pesquisar &raquo;</a></p>
         </div>
     }
 </div>

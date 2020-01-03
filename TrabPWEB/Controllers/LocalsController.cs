@@ -117,7 +117,7 @@ namespace TrabPWEB.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
-            if (db.Stations.Any(p => p.LocalId.Equals(id)))
+            if (db.Stations.Where(p => p.LocalId == id).Any())
             {
                 return RedirectToAction("Index");
             }
@@ -140,6 +140,11 @@ namespace TrabPWEB.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (db.Stations.Where(p => p.LocalId == id).Any())
+            {
+                return RedirectToAction("Index");
+            }
+
             Local local = db.Locals.Find(id);
             db.Locals.Remove(local);
             db.SaveChanges();

@@ -333,6 +333,16 @@ namespace TrabPWEB.Controllers
             base.Dispose(disposing);
         }
 
+        //GET: Saldo do User
+        public decimal getSaldo()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            String userid = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Single().Id;
+
+            return db.MoneyAtribuitions.Where(o => o.UserId.Equals(userid)).Single().Cash;
+        }
+
 #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

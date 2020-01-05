@@ -33,7 +33,10 @@
         <th class="text-center text-nowrap">
             <b>Postos de Carregamento</b>
         </th>
-        <th></th>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <th></th>
+        }
     </tr>
 
     @foreach (TrabPWEB.DAL.Station item in Model.Stations)

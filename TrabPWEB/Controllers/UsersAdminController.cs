@@ -55,7 +55,7 @@ namespace TrabPWEB
         // GET: /Users/
         public async Task<ActionResult> Index()
         {
-            return View(await UserManager.Users.ToListAsync());
+            return View(await UserManager.Users.Where(o => o.UserName != User.Identity.Name).ToListAsync());
         }
 
         //

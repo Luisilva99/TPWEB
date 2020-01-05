@@ -54,6 +54,35 @@ namespace TrabPWEB.Controllers
 
             db.SaveChanges();
 
+            if (User.IsInRole("Owner"))
+            {
+                String userid = db.Users.Where(o => o.UserName.Equals(User.Identity.Name)).Select(o => o.Id).Single();
+
+                List<int> estacoesUser = db.StationAtributions.Where(o => o.UserId.Equals(userid)).Select(o => o.StationId).ToList();
+
+                List<int> postss = new List<int>();
+
+                foreach (StationPostsAtribuition postId in db.StationPostsAtribuition.ToList())
+                {
+                    if (estacoesUser.Contains(postId.StationId))
+                    {
+                        postss.Add(postId.StationPostId);
+                    }
+                }
+
+                List<StationPost> postsTrue = new List<StationPost>();
+
+                foreach (StationPost postId in db.StationPosts.ToList())
+                {
+                    if (postss.Contains(postId.StationPostId))
+                    {
+                        postsTrue.Add(postId);
+                    }
+                }
+
+                return View(postsTrue.ToList());
+            }
+
             var stationPosts = db.StationPosts.Include(s => s.RechargeType).OrderBy(o => o.StationPostId);
             return View(stationPosts.ToList());
         }
@@ -61,7 +90,7 @@ namespace TrabPWEB.Controllers
         // GET: Tempos do posto
         public List<TimeData> getStationTimes(int? id)
         {
-            var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData);
+            var ttt = db.TimeAtribuitions.Where(o => o.StationPostId == id).Select(l => l.TimeData).OrderBy(o => o.Time.Hour);
             return ttt.ToList();
         }
 

@@ -95,7 +95,7 @@ namespace TrabPWEB.Controllers
         }
 
         // GET: StationPosts/AddPost
-        [Authorize(Roles = "Admin,Roles")]
+        [Authorize(Roles = "Admin,Owner")]
         public ActionResult AddPost(int? id)
         {
             if (!User.IsInRole("Owner") && !User.IsInRole("Admin"))
@@ -455,11 +455,6 @@ namespace TrabPWEB.Controllers
                 //--------------------------------------------------------------------
             }
 
-            if (NomeEstacaoRepetido(station))
-            {
-                ModelState.AddModelError("StationName", "Já existe uma estação com este nome.");
-            }
-
             if (ModelState.IsValid)
             {
 
@@ -505,7 +500,6 @@ namespace TrabPWEB.Controllers
                                 db.TimeAtribuitions.Add(ta);
                             }
                         }
-                        db.Entry(db.StationPosts.Find(idPost)).State = EntityState.Modified;
                     }
                 }
 

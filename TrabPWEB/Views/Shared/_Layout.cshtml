@@ -22,17 +22,23 @@
                 @Html.ActionLink("e-Recarga", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="text-size-adjust: auto">
                     @if (User.IsInRole("Admin"))
                     {
                         <li style="text-size-adjust:auto">
                             @Html.ActionLink("Utilizadores", "Index", "UsersAdmin", new { area = "" }, new { @class = "" })
                         </li>
                         <li style="text-size-adjust:auto">
-                                @Html.ActionLink("Locais", "Index", "Locals", new { area = "" }, new { @class = "" })
+                            @Html.ActionLink("Locais", "Index", "Locals", new { area = "" }, new { @class = "" })
                         </li>
                         <li style="text-size-adjust:auto">
                             @Html.ActionLink("Estatísticas", "Index", "Statistics", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Estações", "Index", "Stations", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Postos", "Index", "StationPosts", new { area = "" }, new { @class = "" })
                         </li>
                     }
                     @if (User.IsInRole("Owner"))
@@ -40,15 +46,33 @@
                         <li style="text-size-adjust:auto">
                             @Html.ActionLink("Estatísticas", "Index", "Statistics", new { area = "" }, new { @class = "" })
                         </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Estações", "Index", "Stations", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Postos", "Index", "StationPosts", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
                     }
                     @if (User.IsInRole("Client"))
                     {
                         <li style="text-size-adjust:auto">
                             @Html.ActionLink("Reservas", "Index", "Reserves", new { area = "" }, new { @class = "" })
                         </li>
+                        <li style="text-size-adjust:auto">
+                            @Html.ActionLink("Reservar", "Index", "Stations", new { area = "" }, new { @class = "" })
+                        </li>
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
                     }
-                    <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
-                    <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
+
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Informações", "About", "Home")</li>
+                        <li style="text-size-adjust:auto">@Html.ActionLink("Contactos", "Contact", "Home")</li>
+                    }
+
                 </ul>
                 <div class="nav navbar-nav row">
                     @using (Html.BeginForm("Index", "Stations", FormMethod.Post, new { @class = "navbar-form navbar-left"}))

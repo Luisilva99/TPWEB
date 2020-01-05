@@ -30,7 +30,6 @@
             <b>Horários</b>
         </th>
         <th></th>
-        <th></th>
     </tr> 
 @foreach (var item in Model) {
     <tr>
@@ -68,13 +67,13 @@
                                 @Html.DisplayFor(modelItemTime => itemTime.Time, "{0:HH:mm}")
                             </td>
                             <td>
-                                @if (itemTime.Status)
+                                @if (itemTime.Status && (itemTime.Time.Hour + 1) > DateTime.Now.Hour)
                                 {
-                                    <p>Disponível</p>
+                                    <p style="color: forestgreen">Disponível</p>
                                 }
                                 else
                                 {
-                                    <p>Indisponível</p>
+                                    <p style="color: red">Indisponível</p>
                                 }
                             </td>
                         </tr>

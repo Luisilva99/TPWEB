@@ -62,7 +62,7 @@
                 <p>Cancelada</p>
             }
         </td>
-        @if (item.Completed != 0)
+        @if (item.Completed == 1)
         {
             <td class="text-nowrap">
                 @Html.ActionLink("Editar", "Edit", new { id = item.ReserveId }) |
